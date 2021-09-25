@@ -7,6 +7,9 @@
     <Compile Update="FormAutocompletado.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormEdicionUsuario.cs">
       <SubType>Form</SubType>
     </Compile>

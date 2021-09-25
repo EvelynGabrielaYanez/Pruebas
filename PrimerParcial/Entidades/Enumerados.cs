@@ -12,11 +12,31 @@ namespace Entidades
         Empleado,
         Administador
     }
-    public enum ETipoProducto
+    public enum ETipoDeProducto
     {
-        Usuario,
-        Cliente,
-        Administador
+        Alimento,
+        Cama,
+        Juguete,
+        ArticuloDeCuidado
     }
-
+    public enum EArticulosDeCuidado
+    {
+        Farmacia,
+        Limpieza
+    }
+    public enum ETipoDeAnimal
+    {
+        Perro,
+        Gato,
+        Pajaro,
+        Pez,
+        Hamster
+    }
+    public enum ETipoDePelaje
+    {
+        Raso,
+        Largo,
+        Corto,
+        Rizado
+    }
 }

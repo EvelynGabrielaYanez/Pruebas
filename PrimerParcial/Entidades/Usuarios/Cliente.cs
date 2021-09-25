@@ -9,17 +9,17 @@ namespace Entidades
     public class Cliente : Usuario
     {
         Dictionary<Producto, int> productosComprados; // El producto y la cantidad del mismo Este va a ser el listado de productos comprados cuando el producto exista se lo va a sumar cuando compren
-        double dineroInvertido;
+        double saldo;
         Dictionary<Producto, int> canasto;
         public Cliente(int dni, string nombre, string apellido) : base(dni, nombre, apellido)
         {
-            this.dineroInvertido = 0;
+            this.saldo = 0;
             productosComprados = new Dictionary<Producto, int>();
             canasto = new Dictionary<Producto, int>();
         }
-        public double DineroInvertido
+        public double Saldo
         {
-            get { return this.dineroInvertido; }
+            get { return this.saldo; }
         }
 
         public bool AgregarProducto(Producto producto)
@@ -30,7 +30,7 @@ namespace Entidades
         public void RealizarCompra()
         {
             // Agrega canasto a productos comprados y lo vacia
-            dineroInvertido++; // Esta va a sumar el importe de las ocmpras realizadas
+            this.saldo++; // Esta va a sumar el importe de las ocmpras realizadas
 
         }
         public static bool operator == (Cliente cliente1, Cliente cliente2)

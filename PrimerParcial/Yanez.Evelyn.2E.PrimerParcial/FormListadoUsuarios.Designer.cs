@@ -38,9 +38,9 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelTipos = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsuarios)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.panelTipos.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbTipoUsuario
@@ -94,6 +94,10 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnBuscar.BackColor = System.Drawing.Color.Silver;
             this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnBuscar.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
+            this.btnBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnBuscar.Location = new System.Drawing.Point(653, 65);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(32, 32);
@@ -105,6 +109,10 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnAgregar.BackColor = System.Drawing.Color.Silver;
             this.btnAgregar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregar.BackgroundImage")));
             this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnAgregar.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
+            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnAgregar.Location = new System.Drawing.Point(75, 65);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(35, 34);
@@ -117,6 +125,10 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnEliminar.BackColor = System.Drawing.Color.Silver;
             this.btnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminar.BackgroundImage")));
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnEliminar.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
+            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnEliminar.Location = new System.Drawing.Point(116, 65);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(35, 34);
@@ -129,6 +141,10 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnEditar.BackColor = System.Drawing.Color.Silver;
             this.btnEditar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditar.BackgroundImage")));
             this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnEditar.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
+            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnEditar.Location = new System.Drawing.Point(35, 65);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(34, 34);
@@ -136,15 +152,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // panel1
+            // panelTipos
             // 
-            this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Controls.Add(this.lblTipoDeUsuario);
-            this.panel1.Controls.Add(this.cmbTipoUsuario);
-            this.panel1.Location = new System.Drawing.Point(-1, -3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(727, 56);
-            this.panel1.TabIndex = 10;
+            this.panelTipos.BackColor = System.Drawing.Color.Indigo;
+            this.panelTipos.Controls.Add(this.lblTipoDeUsuario);
+            this.panelTipos.Controls.Add(this.cmbTipoUsuario);
+            this.panelTipos.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.panelTipos.Location = new System.Drawing.Point(-1, -3);
+            this.panelTipos.Name = "panelTipos";
+            this.panelTipos.Size = new System.Drawing.Size(727, 56);
+            this.panelTipos.TabIndex = 10;
             // 
             // FormListadoUsuarios
             // 
@@ -152,7 +169,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(724, 407);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelTipos);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
@@ -167,8 +184,8 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormListadoUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgUsuarios)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelTipos.ResumeLayout(false);
+            this.panelTipos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -183,6 +200,6 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelTipos;
     }
 }

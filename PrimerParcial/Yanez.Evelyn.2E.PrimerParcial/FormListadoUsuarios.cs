@@ -21,6 +21,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
 
         private void FormListadoUsuarios_Load(object sender, EventArgs e)
         {
+            panelTipos.BackColor = Color.FromArgb(125, Color.Indigo);
             this.cmbTipoUsuario.DataSource = Enum.GetValues(typeof(ETipoUsuario));
             tipoDeEmpleado = (ETipoUsuario)this.cmbTipoUsuario.SelectedItem;
         }
