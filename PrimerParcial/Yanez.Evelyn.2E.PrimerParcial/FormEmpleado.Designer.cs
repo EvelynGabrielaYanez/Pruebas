@@ -34,14 +34,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnArticulosDeCuidado = new System.Windows.Forms.Button();
             this.btnAlimentos = new System.Windows.Forms.Button();
             this.btnCamas = new System.Windows.Forms.Button();
-            this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDescartarCompra = new System.Windows.Forms.Button();
+            this.txtDniCliente = new System.Windows.Forms.TextBox();
+            this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.btnFinalizarCompra = new System.Windows.Forms.Button();
             this.lblSaldo = new System.Windows.Forms.Label();
             this.lblDniCliente = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombreDelCliente = new System.Windows.Forms.Label();
             this.lblDatosDelCliente = new System.Windows.Forms.Label();
-            this.txtDniCliente = new System.Windows.Forms.TextBox();
             this.panelJuguetes = new System.Windows.Forms.Panel();
             this.panelAlimentos = new System.Windows.Forms.Panel();
             this.panelCamas = new System.Windows.Forms.Panel();
@@ -64,6 +66,9 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // btnJuguetes
             // 
             this.btnJuguetes.BackColor = System.Drawing.Color.Transparent;
+            this.btnJuguetes.BackgroundImage = global::Yanez.Evelyn._2E.PrimerParcial.Properties.Resources.imgJuguetes;
+            this.btnJuguetes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnJuguetes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnJuguetes.FlatAppearance.BorderSize = 0;
             this.btnJuguetes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnJuguetes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -72,28 +77,32 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnJuguetes.Name = "btnJuguetes";
             this.btnJuguetes.Size = new System.Drawing.Size(129, 126);
             this.btnJuguetes.TabIndex = 1;
-            this.btnJuguetes.Text = "Juguetes";
             this.btnJuguetes.UseVisualStyleBackColor = false;
             this.btnJuguetes.Click += new System.EventHandler(this.btnJuguetes_Click);
             // 
             // btnArticulosDeCuidado
             // 
             this.btnArticulosDeCuidado.BackColor = System.Drawing.Color.Transparent;
+            this.btnArticulosDeCuidado.BackgroundImage = global::Yanez.Evelyn._2E.PrimerParcial.Properties.Resources.imgFarmaciaYLimpieza1;
+            this.btnArticulosDeCuidado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnArticulosDeCuidado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnArticulosDeCuidado.FlatAppearance.BorderSize = 0;
             this.btnArticulosDeCuidado.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnArticulosDeCuidado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnArticulosDeCuidado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArticulosDeCuidado.Location = new System.Drawing.Point(0, 0);
+            this.btnArticulosDeCuidado.Location = new System.Drawing.Point(12, 12);
             this.btnArticulosDeCuidado.Name = "btnArticulosDeCuidado";
-            this.btnArticulosDeCuidado.Size = new System.Drawing.Size(129, 126);
+            this.btnArticulosDeCuidado.Size = new System.Drawing.Size(105, 103);
             this.btnArticulosDeCuidado.TabIndex = 2;
-            this.btnArticulosDeCuidado.Text = "Articulos De Cuidado";
             this.btnArticulosDeCuidado.UseVisualStyleBackColor = false;
             this.btnArticulosDeCuidado.Click += new System.EventHandler(this.btnArticulosDeCuidado_Click);
             // 
             // btnAlimentos
             // 
             this.btnAlimentos.BackColor = System.Drawing.Color.Transparent;
+            this.btnAlimentos.BackgroundImage = global::Yanez.Evelyn._2E.PrimerParcial.Properties.Resources.imgAlimentos;
+            this.btnAlimentos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAlimentos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAlimentos.FlatAppearance.BorderSize = 0;
             this.btnAlimentos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAlimentos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -102,12 +111,15 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnAlimentos.Name = "btnAlimentos";
             this.btnAlimentos.Size = new System.Drawing.Size(129, 126);
             this.btnAlimentos.TabIndex = 3;
-            this.btnAlimentos.Text = "Alimentos";
             this.btnAlimentos.UseVisualStyleBackColor = false;
+            this.btnAlimentos.Click += new System.EventHandler(this.btnAlimentos_Click);
             // 
             // btnCamas
             // 
             this.btnCamas.BackColor = System.Drawing.Color.Transparent;
+            this.btnCamas.BackgroundImage = global::Yanez.Evelyn._2E.PrimerParcial.Properties.Resources.imgCama;
+            this.btnCamas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCamas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCamas.FlatAppearance.BorderSize = 0;
             this.btnCamas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnCamas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -116,39 +128,82 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnCamas.Name = "btnCamas";
             this.btnCamas.Size = new System.Drawing.Size(129, 126);
             this.btnCamas.TabIndex = 4;
-            this.btnCamas.Text = "Camas";
             this.btnCamas.UseVisualStyleBackColor = false;
-            // 
-            // btnBuscarCliente
-            // 
-            this.btnBuscarCliente.Location = new System.Drawing.Point(12, 294);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(146, 25);
-            this.btnBuscarCliente.TabIndex = 6;
-            this.btnBuscarCliente.Text = "Buscar Cliente";
-            this.btnBuscarCliente.UseVisualStyleBackColor = true;
-            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
+            this.btnCamas.Click += new System.EventHandler(this.btnCamas_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Indigo;
+            this.panel1.Controls.Add(this.btnDescartarCompra);
+            this.panel1.Controls.Add(this.txtDniCliente);
+            this.panel1.Controls.Add(this.btnBuscarCliente);
+            this.panel1.Controls.Add(this.btnFinalizarCompra);
             this.panel1.Controls.Add(this.lblSaldo);
             this.panel1.Controls.Add(this.lblDniCliente);
             this.panel1.Controls.Add(this.lblApellido);
             this.panel1.Controls.Add(this.lblNombreDelCliente);
             this.panel1.Controls.Add(this.lblDatosDelCliente);
-            this.panel1.Controls.Add(this.txtDniCliente);
-            this.panel1.Controls.Add(this.btnBuscarCliente);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(174, 351);
             this.panel1.TabIndex = 7;
             // 
+            // btnDescartarCompra
+            // 
+            this.btnDescartarCompra.BackColor = System.Drawing.Color.Silver;
+            this.btnDescartarCompra.FlatAppearance.BorderSize = 0;
+            this.btnDescartarCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDescartarCompra.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDescartarCompra.Location = new System.Drawing.Point(19, 261);
+            this.btnDescartarCompra.Name = "btnDescartarCompra";
+            this.btnDescartarCompra.Size = new System.Drawing.Size(139, 25);
+            this.btnDescartarCompra.TabIndex = 19;
+            this.btnDescartarCompra.Text = "Descartar Compra";
+            this.btnDescartarCompra.UseVisualStyleBackColor = false;
+            this.btnDescartarCompra.Click += new System.EventHandler(this.btnDescartarCompra_Click);
+            // 
+            // txtDniCliente
+            // 
+            this.txtDniCliente.Location = new System.Drawing.Point(19, 56);
+            this.txtDniCliente.Name = "txtDniCliente";
+            this.txtDniCliente.PlaceholderText = "Ingrese el DNI";
+            this.txtDniCliente.Size = new System.Drawing.Size(139, 23);
+            this.txtDniCliente.TabIndex = 18;
+            // 
+            // btnBuscarCliente
+            // 
+            this.btnBuscarCliente.BackColor = System.Drawing.Color.Silver;
+            this.btnBuscarCliente.FlatAppearance.BorderSize = 0;
+            this.btnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBuscarCliente.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscarCliente.Location = new System.Drawing.Point(19, 85);
+            this.btnBuscarCliente.Name = "btnBuscarCliente";
+            this.btnBuscarCliente.Size = new System.Drawing.Size(139, 25);
+            this.btnBuscarCliente.TabIndex = 17;
+            this.btnBuscarCliente.Text = "Buscar Cliente";
+            this.btnBuscarCliente.UseVisualStyleBackColor = false;
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
+            // 
+            // btnFinalizarCompra
+            // 
+            this.btnFinalizarCompra.BackColor = System.Drawing.Color.Silver;
+            this.btnFinalizarCompra.FlatAppearance.BorderSize = 0;
+            this.btnFinalizarCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalizarCompra.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnFinalizarCompra.Location = new System.Drawing.Point(19, 292);
+            this.btnFinalizarCompra.Name = "btnFinalizarCompra";
+            this.btnFinalizarCompra.Size = new System.Drawing.Size(140, 25);
+            this.btnFinalizarCompra.TabIndex = 15;
+            this.btnFinalizarCompra.Text = "Finalizar compra";
+            this.btnFinalizarCompra.UseVisualStyleBackColor = false;
+            // 
             // lblSaldo
             // 
             this.lblSaldo.AutoSize = true;
             this.lblSaldo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblSaldo.Location = new System.Drawing.Point(18, 192);
+            this.lblSaldo.ForeColor = System.Drawing.Color.White;
+            this.lblSaldo.Location = new System.Drawing.Point(19, 228);
             this.lblSaldo.Name = "lblSaldo";
             this.lblSaldo.Size = new System.Drawing.Size(51, 19);
             this.lblSaldo.TabIndex = 12;
@@ -158,7 +213,8 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblDniCliente.AutoSize = true;
             this.lblDniCliente.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDniCliente.Location = new System.Drawing.Point(18, 158);
+            this.lblDniCliente.ForeColor = System.Drawing.Color.White;
+            this.lblDniCliente.Location = new System.Drawing.Point(19, 203);
             this.lblDniCliente.Name = "lblDniCliente";
             this.lblDniCliente.Size = new System.Drawing.Size(38, 19);
             this.lblDniCliente.TabIndex = 11;
@@ -168,7 +224,8 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblApellido.AutoSize = true;
             this.lblApellido.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblApellido.Location = new System.Drawing.Point(18, 124);
+            this.lblApellido.ForeColor = System.Drawing.Color.White;
+            this.lblApellido.Location = new System.Drawing.Point(18, 178);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(70, 19);
             this.lblApellido.TabIndex = 10;
@@ -178,7 +235,8 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblNombreDelCliente.AutoSize = true;
             this.lblNombreDelCliente.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblNombreDelCliente.Location = new System.Drawing.Point(18, 90);
+            this.lblNombreDelCliente.ForeColor = System.Drawing.Color.White;
+            this.lblNombreDelCliente.Location = new System.Drawing.Point(18, 153);
             this.lblNombreDelCliente.Name = "lblNombreDelCliente";
             this.lblNombreDelCliente.Size = new System.Drawing.Size(69, 19);
             this.lblNombreDelCliente.TabIndex = 9;
@@ -188,19 +246,12 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblDatosDelCliente.AutoSize = true;
             this.lblDatosDelCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDatosDelCliente.Location = new System.Drawing.Point(18, 56);
+            this.lblDatosDelCliente.ForeColor = System.Drawing.Color.White;
+            this.lblDatosDelCliente.Location = new System.Drawing.Point(18, 124);
             this.lblDatosDelCliente.Name = "lblDatosDelCliente";
             this.lblDatosDelCliente.Size = new System.Drawing.Size(140, 21);
             this.lblDatosDelCliente.TabIndex = 8;
             this.lblDatosDelCliente.Text = "Datos del Cliente";
-            // 
-            // txtDniCliente
-            // 
-            this.txtDniCliente.Location = new System.Drawing.Point(12, 257);
-            this.txtDniCliente.Name = "txtDniCliente";
-            this.txtDniCliente.PlaceholderText = "Ingrese el DNI";
-            this.txtDniCliente.Size = new System.Drawing.Size(146, 23);
-            this.txtDniCliente.TabIndex = 7;
             // 
             // panelJuguetes
             // 
@@ -287,6 +338,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.cerrarSesionTSM.Name = "cerrarSesionTSM";
             this.cerrarSesionTSM.Size = new System.Drawing.Size(165, 24);
             this.cerrarSesionTSM.Text = "Cerrar Sesión";
+            this.cerrarSesionTSM.Click += new System.EventHandler(this.cerrarSesionTSM_Click);
             // 
             // FormEmpleado
             // 
@@ -329,7 +381,6 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private System.Windows.Forms.Button btnAlimentos;
         private System.Windows.Forms.Button btnCamas;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button btnBuscarCliente;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelJuguetes;
         private System.Windows.Forms.Panel panelAlimentos;
@@ -342,11 +393,14 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private System.Windows.Forms.ToolStripMenuItem seciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSeciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionTSM;
-        private System.Windows.Forms.TextBox txtDniCliente;
         private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.Label lblDniCliente;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblNombreDelCliente;
         private System.Windows.Forms.Label lblDatosDelCliente;
+        private System.Windows.Forms.Button btnDescartarCompra;
+        private System.Windows.Forms.TextBox txtDniCliente;
+        private System.Windows.Forms.Button btnBuscarCliente;
+        private System.Windows.Forms.Button btnFinalizarCompra;
     }
 }

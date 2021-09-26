@@ -9,11 +9,12 @@ namespace Entidades
     public static class PetShop
     {
         public static List<Usuario> usuarios; // Ver si se puede hacer un getter para esto
-        public static List<Producto> productos; // Ver si se puede hacer un getter para esto
+        public static Dictionary<Producto,string> productos; // Ver si se puede hacer un getter para esto
 
         static PetShop()
         {
             usuarios = new List<Usuario>();
+            productos = new Dictionary<Producto, string>();
             // Se HardCodean los listados
             PetShop.HardcodearUsuarios();
             PetShop.HardcodearProductos();
@@ -42,32 +43,31 @@ namespace Entidades
         }
         public static void HardcodearProductos()
         { 
-            /*
             // Se cargan alimentos
             Alimento alimento1 = new Alimento("Mix Perros Adultos",300,"Sabrositos",1.5,ETipoDeAnimal.Perro,"MONAMI");
             Alimento alimento2 = new Alimento("Regular Fit", 6184, "Sabrositos", 7.5, ETipoDeAnimal.Gato, "MONAMI");
             Alimento alimento3 = new Alimento("Mix Canarios Mezcla Semillas", 6184, "Nelsoni R.", 0.75, ETipoDeAnimal.Pajaro, "Pet & Fish");
             Alimento alimento4 = new Alimento("Tropimix", 6184, "Zootec", 1, ETipoDeAnimal.Hamster, "Puppis");
-            PetShop.productos.Add(alimento1);
-            PetShop.productos.Add(alimento2);
-            PetShop.productos.Add(alimento3);
-            PetShop.productos.Add(alimento4);
+            PetShop.productos.Add(alimento1, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(alimento2, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(alimento3, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(alimento4, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
 
             // Se cargan camas
             Cama cama1 = new Cama("Circular con estampado", 4000, "Coconing", "MascotasYa", "Ecológico hipoalergénico", "Polyester");
             Cama cama2 = new Cama("Rectangular y lisa", 5000, "Coconing", "MascotasYa", "Ecológico hipoalergénico", "Funda suave");
             Cama cama3= new Cama("Modelo Small", 5000, "Eggys S", "MascotasYa", "Fibra de poliéster", "Funda de peluche suave");
-            PetShop.productos.Add(cama1);
-            PetShop.productos.Add(cama2);
-            PetShop.productos.Add(cama3);
+            PetShop.productos.Add(cama1, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(cama2, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(cama3, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
 
             // Se cargan Juguetes
             Juguete juguete1 = new Juguete("Hueso Soga", 430, "CanCat", false , false, "Puppis");
             Juguete juguete2 = new Juguete("Hueso S De Goma Dispensador", 800, "Rascals", false, true, "Puppis");
             Juguete juguete3 = new Juguete("Porta Alimento Interactivo", 1540, "PetToys", true, true, "Es Divertido");
-            PetShop.productos.Add(juguete1);
-            PetShop.productos.Add(juguete2);
-            PetShop.productos.Add(juguete3);
+            PetShop.productos.Add(juguete1, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(juguete2, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(juguete3, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
 
             // Se cargan los Articulos de Cuidado de la Mascota
             // Articulos de Farmacia
@@ -75,21 +75,20 @@ namespace Entidades
             ArticuloDeFarmacia articuloFarmacia2 = new ArticuloDeFarmacia("Algel en comprimidos con tramadol 120 Comprimidos", 450, "Algen", "Foyel", ETipoDeAnimal.Gato,true);
             ArticuloDeFarmacia articuloFarmacia3 = new ArticuloDeFarmacia("Vitaminas para hamsters", 600, "Omega3 Pets", "Puppis", ETipoDeAnimal.Hamster, false);
             ArticuloDeFarmacia articuloFarmacia4 = new ArticuloDeFarmacia("Beepower - Promotor De Crecimiento 100ml", 1390, "Exzootix", "Puppis", ETipoDeAnimal.Pajaro, true);
-            PetShop.productos.Add(articuloFarmacia1);
-            PetShop.productos.Add(articuloFarmacia2);
-            PetShop.productos.Add(articuloFarmacia3);
-            PetShop.productos.Add(articuloFarmacia4);
+            PetShop.productos.Add(articuloFarmacia1, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(articuloFarmacia2, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(articuloFarmacia3, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(articuloFarmacia4, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
 
             // Articulos de Limpieza
             Limpieza limpieza1 = new Limpieza("Cepillo Removedor De Pelos", 1000 , "PAKEWAY", "Puppis", ETipoDeAnimal.Perro, ETipoDePelaje.Largo);
             Limpieza limpieza2 = new Limpieza("Sacapelos Y Masajeador", 1500 , "FuriMinator", "Puppis", ETipoDeAnimal.Perro, ETipoDePelaje.Rizado);
             Limpieza limpieza3 = new Limpieza("Guante Sacapelos", 2500 , "FuriMinator", "Puppis", ETipoDeAnimal.Gato, ETipoDePelaje.Corto);
             Limpieza limpieza4 = new Limpieza("Shapoo", 2500 , "PAKEWAY", "Alimasc", ETipoDeAnimal.Perro, ETipoDePelaje.Raso);
-            PetShop.productos.Add(limpieza1);
-            PetShop.productos.Add(limpieza2);
-            PetShop.productos.Add(limpieza3);
-            PetShop.productos.Add(limpieza4);
-            */
+            PetShop.productos.Add(limpieza1, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(limpieza2, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(limpieza3, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(limpieza4, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
         }
         #endregion
 
@@ -147,6 +146,20 @@ namespace Entidades
                 }
             }
             return listaRetorno;
+        }
+
+        public static Producto BuscarProducto(int id)
+        {
+            Producto productoRetorno = null;
+            foreach (KeyValuePair<Producto, string> producto in PetShop.productos)
+            {
+                if (producto.Key.Id == id)
+                {
+                    productoRetorno = producto.Key;
+                    break;
+                }
+            }
+            return productoRetorno;
         }
     }
 }

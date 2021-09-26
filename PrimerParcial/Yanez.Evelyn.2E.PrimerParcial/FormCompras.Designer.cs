@@ -30,7 +30,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCompras));
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvProductos = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblCarrito = new System.Windows.Forms.Label();
             this.lblTipoDeProducto = new System.Windows.Forms.Label();
@@ -39,15 +39,17 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listView1
+            // lvProductos
             // 
-            this.listView1.BackColor = System.Drawing.Color.Silver;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(196, 26);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(298, 299);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lvProductos.AllowDrop = true;
+            this.lvProductos.BackColor = System.Drawing.Color.Silver;
+            this.lvProductos.HideSelection = false;
+            this.lvProductos.Location = new System.Drawing.Point(196, 26);
+            this.lvProductos.Name = "lvProductos";
+            this.lvProductos.Size = new System.Drawing.Size(298, 299);
+            this.lvProductos.TabIndex = 0;
+            this.lvProductos.UseCompatibleStateImageBehavior = false;
+            this.lvProductos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvProductos_MouseDown);
             // 
             // panel1
             // 
@@ -65,6 +67,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblCarrito.AutoSize = true;
             this.lblCarrito.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCarrito.ForeColor = System.Drawing.Color.White;
             this.lblCarrito.Location = new System.Drawing.Point(14, 98);
             this.lblCarrito.Name = "lblCarrito";
             this.lblCarrito.Size = new System.Drawing.Size(136, 19);
@@ -75,6 +78,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblTipoDeProducto.AutoSize = true;
             this.lblTipoDeProducto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTipoDeProducto.ForeColor = System.Drawing.Color.White;
             this.lblTipoDeProducto.Location = new System.Drawing.Point(14, 25);
             this.lblTipoDeProducto.Name = "lblTipoDeProducto";
             this.lblTipoDeProducto.Size = new System.Drawing.Size(130, 19);
@@ -83,6 +87,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             // listBox1
             // 
+            this.listBox1.AllowDrop = true;
             this.listBox1.BackColor = System.Drawing.Color.Silver;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
@@ -90,6 +95,8 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(143, 199);
             this.listBox1.TabIndex = 8;
+            this.listBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox1_DragDrop);
+            this.listBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox1_DragEnter);
             // 
             // cmbTipoDeProducto
             // 
@@ -105,7 +112,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(516, 348);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lvProductos);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -120,7 +127,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lvProductos;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cmbTipoDeProducto;
         private System.Windows.Forms.ListBox listBox1;

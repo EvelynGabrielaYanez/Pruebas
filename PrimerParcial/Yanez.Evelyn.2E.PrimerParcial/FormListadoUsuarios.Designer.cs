@@ -47,7 +47,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.cmbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoUsuario.FormattingEnabled = true;
-            this.cmbTipoUsuario.Location = new System.Drawing.Point(137, 20);
+            this.cmbTipoUsuario.Location = new System.Drawing.Point(157, 16);
             this.cmbTipoUsuario.Name = "cmbTipoUsuario";
             this.cmbTipoUsuario.Size = new System.Drawing.Size(147, 23);
             this.cmbTipoUsuario.TabIndex = 0;
@@ -56,10 +56,11 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // lblTipoDeUsuario
             // 
             this.lblTipoDeUsuario.AutoSize = true;
-            this.lblTipoDeUsuario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTipoDeUsuario.Location = new System.Drawing.Point(36, 23);
+            this.lblTipoDeUsuario.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTipoDeUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblTipoDeUsuario.Location = new System.Drawing.Point(36, 17);
             this.lblTipoDeUsuario.Name = "lblTipoDeUsuario";
-            this.lblTipoDeUsuario.Size = new System.Drawing.Size(95, 15);
+            this.lblTipoDeUsuario.Size = new System.Drawing.Size(116, 19);
             this.lblTipoDeUsuario.TabIndex = 1;
             this.lblTipoDeUsuario.Text = "Tipo De Usuario";
             // 
@@ -84,9 +85,9 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // cmbBuscar
             // 
             this.cmbBuscar.FormattingEnabled = true;
-            this.cmbBuscar.Location = new System.Drawing.Point(453, 70);
+            this.cmbBuscar.Location = new System.Drawing.Point(461, 70);
             this.cmbBuscar.Name = "cmbBuscar";
-            this.cmbBuscar.Size = new System.Drawing.Size(194, 23);
+            this.cmbBuscar.Size = new System.Drawing.Size(186, 23);
             this.cmbBuscar.TabIndex = 5;
             // 
             // btnBuscar

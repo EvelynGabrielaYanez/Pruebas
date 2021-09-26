@@ -22,33 +22,27 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             FormEmpleado.cliente = null;
         }
 
-        private void cerrarSesionTSM_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("¿Seguro que desea cerrar sesión?", "Cierre de sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                this.Close();
-        }
-
         private void FormEmpleado_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (MessageBox.Show("¿Seguro que desea cerrar el programa?", "Cierre de programa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             if (MessageBox.Show("¿Seguro que desea cerrar sesión?", "Cierre de sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 e.Cancel = true ;
         }
 
-
-        private void cerrarSesionTSM_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void FormEmpleado_Load(object sender, EventArgs e)
         {
+            // Se configura la apariencia de los paneles
             panel1.BackColor = Color.FromArgb(125,Color.Indigo);
             panelAlimentos.BackColor = Color.FromArgb(125,Color.Silver);
             panelCamas.BackColor = Color.FromArgb(125,Color.Silver);
             panelJuguetes.BackColor = Color.FromArgb(125,Color.Silver);
             panelArticulosDeCuidado.BackColor = Color.FromArgb(125,Color.Silver);
             msMenu.BringToFront();
+            panel1.SendToBack();
+
+            // Se configura la apariencia de los botones
+            btnBuscarCliente.BackColor = Color.FromArgb(171, 143, 192);
+            btnDescartarCompra.BackColor = Color.FromArgb(171, 143, 192);
+            btnFinalizarCompra.BackColor = Color.FromArgb(171, 143, 192);
 
             // Configura el auto completado del dni del cliente
             AutoCompleteStringCollection fuenteDeAutoCompletado = new AutoCompleteStringCollection();
@@ -58,31 +52,24 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             {
                 fuenteDeAutoCompletado.Add(cliente.Dni.ToString());
             }
+
             // configura el textBox del DNI del cliente
             this.txtDniCliente.AutoCompleteCustomSource = fuenteDeAutoCompletado;
             this.txtDniCliente.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             this.txtDniCliente.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-            // Oculta los labels con los datos del cliente
-            lblNombreDelCliente.Visible = false;
-            lblApellido.Visible = false;
-            lblDniCliente.Visible = false;
-            lblSaldo.Visible = false;
-            lblDatosDelCliente.Visible = false;
+            // Completa los labels del Cliente por defecto
+            lblNombreDelCliente.Text = $"Nombre:";
+            lblApellido.Text = $"Apellido:";
+            lblDniCliente.Text = $"DNI:";
+            lblSaldo.Text = $"Saldo:";
+
+            // Se bloquean los botones de finalizacion y descarte de venta.
+            btnFinalizarCompra.Enabled = false;
+            btnDescartarCompra.Enabled = false;
+
         }
 
-        private void btnArticulosDeCuidado_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnJuguetes_Click(object sender, EventArgs e)
-        {
-            FormCompras frmCompras = new FormCompras();
-            this.Visible = false;
-            frmCompras.ShowDialog();
-            this.Visible = true;
-        }
 
         private void FormEmpleado_MouseMove(object sender, MouseEventArgs e)
         {
@@ -105,6 +92,38 @@ namespace Yanez.Evelyn._2E.PrimerParcial
 
         }
 
+        private void btnAlimentos_Click(object sender, EventArgs e)
+        {
+            FormCompras frmCompras = new FormCompras(ETipoDeProducto.Alimento);
+            this.Visible = false;
+            frmCompras.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void btnArticulosDeCuidado_Click(object sender, EventArgs e)
+        {
+            FormCompras frmCompras = new FormCompras(ETipoDeProducto.ArticuloDeCuidado);
+            this.Visible = false;
+            frmCompras.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void btnJuguetes_Click(object sender, EventArgs e)
+        {
+            FormCompras frmCompras = new FormCompras(ETipoDeProducto.Juguete);
+            this.Visible = false;
+            frmCompras.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void btnCamas_Click(object sender, EventArgs e)
+        {
+            FormCompras frmCompras = new FormCompras(ETipoDeProducto.Cama);
+            this.Visible = false;
+            frmCompras.ShowDialog();
+            this.Visible = true;
+        }
+
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             int dni = Usuario.ValidarDNI(txtDniCliente.Text);
@@ -118,7 +137,13 @@ namespace Yanez.Evelyn._2E.PrimerParcial
                 }
                 else
                 {
-                    MessageBox.Show("No existe un cliente con el DNI indicado. \nDe no estar registrado debe hacerlo desde la configuración de usuarios.");
+                    if (MessageBox.Show("No existe un cliente con el DNI indicado. \n¿Desea registrarlo?", "Cliente No Registrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        FormListadoUsuarios frmListadoUsuarios = new FormListadoUsuarios();
+                        this.Visible = false;
+                        frmListadoUsuarios.ShowDialog();
+                        this.Visible = true;
+                    }
                 }
             }
             else
@@ -128,6 +153,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.ConfigurarDatosCliente();
         }
 
+
         private void ConfigurarDatosCliente()
         {
             if (FormEmpleado.cliente != null)
@@ -136,21 +162,30 @@ namespace Yanez.Evelyn._2E.PrimerParcial
                 lblApellido.Text = $"Apellido: {FormEmpleado.cliente.Apellido}";
                 lblDniCliente.Text = $"DNI: {FormEmpleado.cliente.Dni}";
                 lblSaldo.Text = $"Saldo: {FormEmpleado.cliente.Saldo}";
-                lblNombreDelCliente.Visible = true;
-                lblApellido.Visible = true;
-                lblDniCliente.Visible = true;
-                lblSaldo.Visible = true;
-                lblDatosDelCliente.Visible = true;
+                btnFinalizarCompra.Enabled = true;
+                btnDescartarCompra.Enabled = true;
             }
-            else {
-                lblNombreDelCliente.Visible = false;
-                lblApellido.Visible = false;
-                lblDniCliente.Visible = false;
-                lblSaldo.Visible = false;
-                lblDatosDelCliente.Visible = false;
+            else
+            {
+                lblNombreDelCliente.Text = $"Nombre:";
+                lblApellido.Text = $"Apellido:";
+                lblDniCliente.Text = $"DNI:";
+                lblSaldo.Text = $"Saldo:";
+                btnFinalizarCompra.Enabled = false;
+                btnDescartarCompra.Enabled = false;
             }
+        }
 
-            
+        private void cerrarSesionTSM_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnDescartarCompra_Click(object sender, EventArgs e)
+        {
+            FormEmpleado.cliente = null;
+            this.ConfigurarDatosCliente();
+            txtDniCliente.Text = String.Empty;
         }
     }
 }
