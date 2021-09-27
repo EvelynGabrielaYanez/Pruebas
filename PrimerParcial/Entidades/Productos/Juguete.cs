@@ -10,13 +10,10 @@ namespace Entidades
     {
         bool haceSonido;
         bool contieneComida;
-        public Juguete(string descripcion, double precio, string marca,bool haceSonido, bool contieneComida,string proveedor) : base(descripcion, precio,marca, proveedor)
+        public Juguete(string descripcion, double precio, string marca,bool haceSonido, bool contieneComida,string proveedor,int stock) : base(descripcion, precio,marca, proveedor,stock)
         {
             this.haceSonido = haceSonido;
             this.contieneComida = contieneComida;
         }
-
-
-
     }
 }

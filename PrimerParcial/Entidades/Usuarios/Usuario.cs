@@ -29,7 +29,6 @@ namespace Entidades
             get { return this.activo; }
             set { this.activo = value; }
         }
-
         private Usuario()
         {
             this.nombre = "";

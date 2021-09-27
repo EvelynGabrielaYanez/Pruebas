@@ -9,7 +9,7 @@ namespace Entidades
     public class ArticuloDeFarmacia : ArticuloDeCuidado
     {
         bool requierePrescripcion;
-        public ArticuloDeFarmacia(string descripcion, double precio, string marca, string proveedor, ETipoDeAnimal tipoDeAnimal, bool requierePrescripcion) : base(descripcion, precio, marca, proveedor, tipoDeAnimal)
+        public ArticuloDeFarmacia(string descripcion, double precio, string marca, string proveedor, ETipoDeAnimal tipoDeAnimal, bool requierePrescripcion, int stock) : base(descripcion, precio, marca, proveedor, tipoDeAnimal,stock)
         {
             this.requierePrescripcion = requierePrescripcion;
         }

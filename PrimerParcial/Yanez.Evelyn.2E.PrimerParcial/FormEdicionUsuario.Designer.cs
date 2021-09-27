@@ -128,7 +128,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 226);
+            this.ClientSize = new System.Drawing.Size(360, 347);
             this.Controls.Add(this.lblContrasenia);
             this.Controls.Add(this.lblNombreUsuario);
             this.Controls.Add(this.lblApellido);
@@ -142,6 +142,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.Name = "FrmEdicionUsuario";
             this.Text = "Editar Usuario:";
             this.Load += new System.EventHandler(this.FrmEdicionUsuario_Load);
+            this.Controls.SetChildIndex(this.btnCancelar, 0);
+            this.Controls.SetChildIndex(this.btnAceptar, 0);
+            this.Controls.SetChildIndex(this.txtNombre, 0);
+            this.Controls.SetChildIndex(this.txtApellido, 0);
+            this.Controls.SetChildIndex(this.txtNombreUsuario, 0);
+            this.Controls.SetChildIndex(this.txtContrasenia, 0);
+            this.Controls.SetChildIndex(this.lblNombre, 0);
+            this.Controls.SetChildIndex(this.lblApellido, 0);
+            this.Controls.SetChildIndex(this.lblNombreUsuario, 0);
+            this.Controls.SetChildIndex(this.lblContrasenia, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

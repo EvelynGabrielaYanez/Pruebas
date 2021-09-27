@@ -183,9 +183,24 @@ namespace Yanez.Evelyn._2E.PrimerParcial
 
         private void btnDescartarCompra_Click(object sender, EventArgs e)
         {
+            this.DescartarComra();
+        }
+        private void DescartarComra()
+        {
             FormEmpleado.cliente = null;
             this.ConfigurarDatosCliente();
-            txtDniCliente.Text = String.Empty;
+            txtDniCliente.Text = string.Empty;
+        }
+
+        private void btnFinalizarCompra_Click(object sender, EventArgs e)
+        {
+            FormFinalizarCompra frmFinalizarCompra = new FormFinalizarCompra();
+            this.Visible = false;
+            if (frmFinalizarCompra.ShowDialog() == DialogResult.OK)
+            {
+                this.DescartarComra();
+            }
+            this.Visible = true;
         }
     }
 }

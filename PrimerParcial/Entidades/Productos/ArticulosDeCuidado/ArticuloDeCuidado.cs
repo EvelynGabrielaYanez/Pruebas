@@ -9,7 +9,7 @@ namespace Entidades
     public abstract class ArticuloDeCuidado : Producto
     {
         ETipoDeAnimal tipoDeAnimal;
-        public ArticuloDeCuidado(string descripcion, double precio, string marca, string proveedor , ETipoDeAnimal tipoDeAnimal) : base(descripcion, precio, marca, proveedor)
+        public ArticuloDeCuidado(string descripcion, double precio, string marca, string proveedor , ETipoDeAnimal tipoDeAnimal, int stock) : base(descripcion, precio, marca, proveedor,stock)
         {
             this.tipoDeAnimal = tipoDeAnimal;
         }

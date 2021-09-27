@@ -25,79 +25,105 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             panel1.BackColor = Color.FromArgb(125, Color.Indigo);
             this.cmbTipoDeProducto.DataSource = Enum.GetValues(typeof(ETipoDeProducto));
             this.cmbTipoDeProducto.SelectedItem = this.tipoDeProducto;
-            ImageList imgs = new ImageList();
+
+            this.ACtualizarProductos();
+            this.lbCarroDeCompras.HorizontalScrollbar = true;
+            if (FormEmpleado.cliente is not null)
+            {
+                foreach (KeyValuePair<Producto, int> producto in FormEmpleado.cliente.Carrito)
+                {
+                    this.lbCarroDeCompras.Items.Add($"{producto.Key.Descripcion} - {producto.Key.Marca}");
+                }
+            }
+            else
+            {
+                lblCarrito.AllowDrop = false;// No funciono, lo tengo que arreglar
+                lvProductos.AllowDrop = false;
+            }
+            // Carga los productos al listbox del carro
+        }
+
+        private void ACtualizarProductos()
+        {
+
+            Dictionary<Producto, string> listaFiltrada = new Dictionary<Producto, string>();
+            lvProductos.Clear();
+            switch ((ETipoDeProducto)this.cmbTipoDeProducto.SelectedItem)
+            {
+                case ETipoDeProducto.Alimento:
+                    listaFiltrada = PetShop.FiltrarListadoProducto(typeof(Alimento));
+                    break;
+                case ETipoDeProducto.Cama:
+                    listaFiltrada = PetShop.FiltrarListadoProducto(typeof(Cama));
+                    break;
+                case ETipoDeProducto.Juguete:
+                    listaFiltrada = PetShop.FiltrarListadoProducto(typeof(Juguete));
+                    break;
+                case ETipoDeProducto.ArticuloDeCuidado:
+                    listaFiltrada = PetShop.FiltrarListadoProducto(typeof(ArticuloDeCuidado));
+                    break;
+            }
+            //ImageList imgs = new ImageList();
             int i = 0;
-            foreach (KeyValuePair<Producto,string> producto in PetShop.productos)
+            foreach (KeyValuePair<Producto, string> producto in listaFiltrada)
             {
                 //imgs.Images.Add(Image.FromFile(producto.Value));
                 //string[] fila = {i.ToString() ,producto.Key.Descripcion, producto.Key.Marca, producto.Key.Id.ToString()};
                 //var nuevoItem = new ListViewItem(fila);
                 //lvProductos.Items.Add(nuevoItem);
-                lvProductos.Items.Add(producto.Key.Id.ToString(),producto.Key.Descripcion, i);
+                lvProductos.Items.Add(producto.Key.Id.ToString(), producto.Key.Descripcion, i);
                 i++;
             }
- 
-            //lvProductos.SmallImageList = imgs;
-            /*
-            //ImageList imgs = new ImageList();
-            Image imagen = Image.FromFile("");
-            imgs.Images.Add(Image.FromFile(""));
 
-            lvProductos.SmallImageList = imgs;*/
+
         }
 
         private void lvProductos_MouseDown(object sender, MouseEventArgs e)
         {
+            if (e.Clicks == 2 && lvProductos.SelectedItems.Count == 1)
+            {
+                lvProductos_MouseDoubleClick(sender, e);
+                return;
+            }
             if (lvProductos.SelectedItems.Count > 0)
             {
                 ListViewItem item = lvProductos.SelectedItems[0];
-                //MessageBox.Show(item.Text);
-                DragDropEffects pruebaDragAnd = DoDragDrop(item.Name, DragDropEffects.All);
+                DoDragDrop(item.Name, DragDropEffects.All);
             }
         }
 
-        private void listBox1_DragEnter(object sender, DragEventArgs e)
+        private void lbCarrroDeCompras_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
-            string id = (string)e.Data.GetData(DataFormats.Text);
-            Producto producto = PetShop.BuscarProducto(int.Parse(id));
-            ListBox lst = new ListBox();
-            listBox1.Items.Add( producto.Id + "-" + producto.Descripcion);
-        }
+            string strId = (string)e.Data.GetData(DataFormats.Text);
 
-        private void listBox1_DragDrop(object sender, DragEventArgs e)
-        {
-
-            ListBox lst = sender as ListBox;
-
-            // Get the ListBox item data.
-            DragItem drag_item = (DragItem)e.Data.GetData(typeof(DragItem));
-
-
-            ListBox lstp = (ListBox)sender;
-            _ = lstp.Items;
-            /*
-            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            if (int.TryParse(strId, out int id) && !FormEmpleado.cliente.ValidarProductoEnCanasto(id))
             {
-                string str = (string)e.Data.GetData(
-                    DataFormats.StringFormat);
-
-                listBox1.Items.Add(str);
-            }*/
+                Producto producto = PetShop.BuscarProducto(id);
+                // Se agrega el producto al carro del cliente.
+                FormEmpleado.cliente[id] = producto;
+                // Se agrega a la lista.
+                this.lbCarroDeCompras.Items.Add($"{producto.Descripcion} - {producto.Marca}");
+            }
         }
 
-    }
-    public class DragItem
-    {
-        public ListBox Client;
-        public int Index;
-        public object Item;
-
-        public DragItem(ListBox client, int index, object item)
+        private void cmbTipoDeProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Client = client;
-            Index = index;
-            Item = item;
+            this.ACtualizarProductos();
+        }
+
+        private void lvProductos_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (int.TryParse(lvProductos.SelectedItems[0].Name, out int id))
+            {
+                Producto producto = PetShop.BuscarProducto(id);
+                FormDatosProducto frmDatosProducto = new FormDatosProducto(producto);
+                this.Visible = false;
+                frmDatosProducto.ShowDialog();
+                this.Visible = true;
+            }
+
+
         }
     }
 }

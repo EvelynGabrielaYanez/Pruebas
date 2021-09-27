@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Yanez.Evelyn._2E.PrimerParcial
 {
-    public partial class FrmEdicionUsuario : Form
+    public partial class FrmEdicionUsuario : FormAgregarUsuario
     {
         Usuario usuario;
         public FrmEdicionUsuario(Usuario usuario)

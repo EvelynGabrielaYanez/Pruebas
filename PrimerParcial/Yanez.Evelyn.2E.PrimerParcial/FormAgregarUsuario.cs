@@ -18,7 +18,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             InitializeComponent();
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        protected virtual void btnAceptar_Click(object sender, EventArgs e)
         {
             int dni = Usuario.ValidarDNI(txtDni.Text);
             if (dni != 0)
@@ -39,7 +39,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
                 this.Close();
             }
         }
-        private void FormAgregarUsuario_Load(object sender, EventArgs e)
+        protected virtual void FormAgregarUsuario_Load(object sender, EventArgs e)
         {
             this.ConfiguraVisibilidad();
         }

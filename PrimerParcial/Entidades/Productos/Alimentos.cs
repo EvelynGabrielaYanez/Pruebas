@@ -10,7 +10,7 @@ namespace Entidades
     {
         double Kilos;
         ETipoDeAnimal animalQueLoConsume;
-        public Alimento(string descripcion, double precio, string marca, double Kilos, ETipoDeAnimal animalQueLoConsume, string proveedor) : base(descripcion, precio, marca,proveedor)
+        public Alimento(string descripcion, double precio, string marca, double Kilos, ETipoDeAnimal animalQueLoConsume, string proveedor,int stock) : base(descripcion, precio, marca,proveedor, stock)
         {
             this.Kilos = Kilos;
             this.animalQueLoConsume = animalQueLoConsume;

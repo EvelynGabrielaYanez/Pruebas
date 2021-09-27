@@ -197,6 +197,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnFinalizarCompra.TabIndex = 15;
             this.btnFinalizarCompra.Text = "Finalizar compra";
             this.btnFinalizarCompra.UseVisualStyleBackColor = false;
+            this.btnFinalizarCompra.Click += new System.EventHandler(this.btnFinalizarCompra_Click);
             // 
             // lblSaldo
             // 

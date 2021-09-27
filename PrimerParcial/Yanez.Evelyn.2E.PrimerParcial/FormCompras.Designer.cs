@@ -34,7 +34,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblCarrito = new System.Windows.Forms.Label();
             this.lblTipoDeProducto = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbCarroDeCompras = new System.Windows.Forms.ListBox();
             this.cmbTipoDeProducto = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -43,12 +43,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lvProductos.AllowDrop = true;
             this.lvProductos.BackColor = System.Drawing.Color.Silver;
+            this.lvProductos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvProductos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lvProductos.HideSelection = false;
             this.lvProductos.Location = new System.Drawing.Point(196, 26);
+            this.lvProductos.MultiSelect = false;
             this.lvProductos.Name = "lvProductos";
             this.lvProductos.Size = new System.Drawing.Size(298, 299);
             this.lvProductos.TabIndex = 0;
             this.lvProductos.UseCompatibleStateImageBehavior = false;
+            this.lvProductos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvProductos_MouseDoubleClick);
             this.lvProductos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvProductos_MouseDown);
             // 
             // panel1
@@ -56,7 +60,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.panel1.BackColor = System.Drawing.Color.Indigo;
             this.panel1.Controls.Add(this.lblCarrito);
             this.panel1.Controls.Add(this.lblTipoDeProducto);
-            this.panel1.Controls.Add(this.listBox1);
+            this.panel1.Controls.Add(this.lbCarroDeCompras);
             this.panel1.Controls.Add(this.cmbTipoDeProducto);
             this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
@@ -85,18 +89,17 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.lblTipoDeProducto.TabIndex = 9;
             this.lblTipoDeProducto.Text = "Tipo de Producto:";
             // 
-            // listBox1
+            // lbCarroDeCompras
             // 
-            this.listBox1.AllowDrop = true;
-            this.listBox1.BackColor = System.Drawing.Color.Silver;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(14, 120);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(143, 199);
-            this.listBox1.TabIndex = 8;
-            this.listBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox1_DragDrop);
-            this.listBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox1_DragEnter);
+            this.lbCarroDeCompras.AllowDrop = true;
+            this.lbCarroDeCompras.BackColor = System.Drawing.Color.Silver;
+            this.lbCarroDeCompras.FormattingEnabled = true;
+            this.lbCarroDeCompras.ItemHeight = 15;
+            this.lbCarroDeCompras.Location = new System.Drawing.Point(14, 120);
+            this.lbCarroDeCompras.Name = "lbCarroDeCompras";
+            this.lbCarroDeCompras.Size = new System.Drawing.Size(143, 199);
+            this.lbCarroDeCompras.TabIndex = 8;
+            this.lbCarroDeCompras.DragEnter += new System.Windows.Forms.DragEventHandler(this.lbCarrroDeCompras_DragEnter);
             // 
             // cmbTipoDeProducto
             // 
@@ -105,6 +108,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.cmbTipoDeProducto.Name = "cmbTipoDeProducto";
             this.cmbTipoDeProducto.Size = new System.Drawing.Size(143, 23);
             this.cmbTipoDeProducto.TabIndex = 7;
+            this.cmbTipoDeProducto.SelectedIndexChanged += new System.EventHandler(this.cmbTipoDeProducto_SelectedIndexChanged);
             // 
             // FormCompras
             // 
@@ -130,7 +134,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private System.Windows.Forms.ListView lvProductos;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cmbTipoDeProducto;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbCarroDeCompras;
         private System.Windows.Forms.Label lblCarrito;
         private System.Windows.Forms.Label lblTipoDeProducto;
     }

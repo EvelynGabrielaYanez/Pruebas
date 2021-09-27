@@ -10,7 +10,7 @@ namespace Entidades
     {
         string tipoDeReyeno;
         string tipoDeTela;
-        public Cama(string descripcion, double precio, string marca, string proveedor,string tipoDeReyeno, string tipoDeTela) : base(descripcion, precio, marca,proveedor)
+        public Cama(string descripcion, double precio, string marca, string proveedor,string tipoDeReyeno, string tipoDeTela, int stock) : base(descripcion, precio, marca,proveedor, stock)
         {
             this.tipoDeReyeno = tipoDeReyeno;
             this.tipoDeTela = tipoDeTela;

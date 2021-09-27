@@ -8,31 +8,96 @@ namespace Entidades
 {
     public class Cliente : Usuario
     {
-        Dictionary<Producto, int> productosComprados; // El producto y la cantidad del mismo Este va a ser el listado de productos comprados cuando el producto exista se lo va a sumar cuando compren
+        // El producto y la cantidad del mismo Este va a ser el listado de productos comprados cuando el producto exista se lo va a sumar cuando compren
+        Dictionary<Producto, int> productosComprados; 
         double saldo;
-        Dictionary<Producto, int> canasto;
+        Dictionary<Producto, int> carrito;
         public Cliente(int dni, string nombre, string apellido) : base(dni, nombre, apellido)
         {
             this.saldo = 0;
             productosComprados = new Dictionary<Producto, int>();
-            canasto = new Dictionary<Producto, int>();
+            carrito = new Dictionary<Producto, int>();
         }
         public double Saldo
         {
             get { return this.saldo; }
+            set {
+                this.saldo = value;
+            }
         }
-
-        public bool AgregarProducto(Producto producto)
+        public Dictionary<Producto, int> Carrito
         {
-            return true;
+            get { 
+                return this.carrito; 
+            }
         }
-
-        public void RealizarCompra()
+        public Dictionary<Producto, int> ProductosComprados
         {
-            // Agrega canasto a productos comprados y lo vacia
-            this.saldo++; // Esta va a sumar el importe de las ocmpras realizadas
-
+            get
+            {
+                return this.carrito;
+            }
         }
+        public Producto this[int id]
+        {
+            set 
+            {
+                KeyValuePair<Producto, int> parProductoCantidad = this.BuscarProductoEnCanasto(id);
+                if (!parProductoCantidad.Equals(default(KeyValuePair<Producto, int>)))
+                {
+                    this.carrito.Remove(parProductoCantidad.Key);
+                    this.carrito.Add(parProductoCantidad.Key, parProductoCantidad.Value + 1);
+                }
+                else
+                {
+                    this.carrito.Add(value,1);
+                }
+            }
+        }
+        public bool RealizarCompra()
+        {
+            bool retorno = false;
+            double gastosTotales = 0;
+            if (this.carrito.Count > 0)
+            {
+                foreach (KeyValuePair<Producto, int> producto in this.carrito)
+                {
+                    if (!this.productosComprados.TryAdd(producto.Key, producto.Value))
+                    {
+                        int cantidadActual = this.carrito.GetValueOrDefault(producto.Key);
+                        // Reduce el stock del producto en el petship
+                        producto.Key.Stock -= cantidadActual;
+                        // Elimina el producto y vuelve  a cargar el nuevo modificado
+                        this.productosComprados.Remove(producto.Key);
+                        this.productosComprados.Add(producto.Key, cantidadActual + producto.Value);
+                    }
+                    gastosTotales += producto.Key.Precio;
+                }
+                this.carrito.Clear();
+                this.Saldo -= gastosTotales;
+                retorno = true;
+            }
+            return retorno;
+        }
+        public KeyValuePair<Producto, int> BuscarProductoEnCanasto(int id)
+        {
+            KeyValuePair<Producto, int> retorno = new KeyValuePair<Producto, int>();
+            foreach (KeyValuePair<Producto,int> producto in carrito)
+            {
+                if (producto.Key.Id == id)
+                {
+                    retorno = producto;
+                    break;
+                }
+            }
+            return retorno;
+        }
+
+        public bool ValidarProductoEnCanasto(int id)
+        {
+            return !this.BuscarProductoEnCanasto(id).Equals(default(KeyValuePair<Producto, int>));
+        }
+
         public static bool operator == (Cliente cliente1, Cliente cliente2)
         {
             bool retorno = false;

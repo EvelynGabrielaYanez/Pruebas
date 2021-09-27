@@ -174,13 +174,13 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private System.Windows.Forms.Label lblNombreUsuario;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.TextBox txtContrasenia;
-        private System.Windows.Forms.TextBox txtNombreUsuario;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblDni;
-        private System.Windows.Forms.TextBox txtDni;
+        protected System.Windows.Forms.TextBox txtContrasenia;
+        protected System.Windows.Forms.TextBox txtNombreUsuario;
+        protected System.Windows.Forms.TextBox txtApellido;
+        protected System.Windows.Forms.TextBox txtNombre;
+        protected System.Windows.Forms.Button btnAceptar;
+        protected System.Windows.Forms.Button btnCancelar;
+        protected System.Windows.Forms.TextBox txtDni;
     }
 }

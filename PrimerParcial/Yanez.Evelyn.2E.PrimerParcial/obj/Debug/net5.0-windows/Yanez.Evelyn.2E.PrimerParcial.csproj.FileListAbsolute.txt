@@ -81,3 +81,5 @@ C:\Users\EGY96\OneDrive\Escritorio\Pruebas\PrimerParcial\Yanez.Evelyn.2E.PrimerP
 C:\Users\EGY96\OneDrive\Escritorio\Pruebas\PrimerParcial\Yanez.Evelyn.2E.PrimerParcial\obj\Debug\net5.0-windows\ref\Yanez.Evelyn.2E.PrimerParcial.dll
 C:\Users\EGY96\OneDrive\Escritorio\Pruebas\PrimerParcial\Yanez.Evelyn.2E.PrimerParcial\obj\Debug\net5.0-windows\Yanez.Evelyn.2E.PrimerParcial.pdb
 C:\Users\EGY96\OneDrive\Escritorio\Pruebas\PrimerParcial\Yanez.Evelyn.2E.PrimerParcial\obj\Debug\net5.0-windows\Yanez.Evelyn.2E.PrimerParcial.genruntimeconfig.cache
+C:\Users\EGY96\OneDrive\Escritorio\Pruebas\PrimerParcial\Yanez.Evelyn.2E.PrimerParcial\obj\Debug\net5.0-windows\Yanez.Evelyn._2E.PrimerParcial.FormFinalizarCompra.resources
+C:\Users\EGY96\OneDrive\Escritorio\Pruebas\PrimerParcial\Yanez.Evelyn.2E.PrimerParcial\obj\Debug\net5.0-windows\Yanez.Evelyn._2E.PrimerParcial.FormDatosProducto.resources
