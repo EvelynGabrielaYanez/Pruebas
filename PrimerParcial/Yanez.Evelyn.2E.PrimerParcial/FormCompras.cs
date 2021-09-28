@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,33 +18,31 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         public FormCompras(ETipoDeProducto tipoDeProducto)
         {
             InitializeComponent();
-            this.tipoDeProducto = (ETipoDeProducto)tipoDeProducto;
+            this.tipoDeProducto = tipoDeProducto;
         }
 
         private void FormCompras_Load(object sender, EventArgs e)
         {
+            lvProductos.View = View.LargeIcon;
+            lvCarroDeCompras.View = View.List;
             panel1.BackColor = Color.FromArgb(125, Color.Indigo);
             this.cmbTipoDeProducto.DataSource = Enum.GetValues(typeof(ETipoDeProducto));
             this.cmbTipoDeProducto.SelectedItem = this.tipoDeProducto;
 
-            this.ACtualizarProductos();
-            this.lbCarroDeCompras.HorizontalScrollbar = true;
+            this.ActualizarProductos();
             if (FormEmpleado.cliente is not null)
             {
-                foreach (KeyValuePair<Producto, int> producto in FormEmpleado.cliente.Carrito)
-                {
-                    this.lbCarroDeCompras.Items.Add($"{producto.Key.Descripcion} - {producto.Key.Marca}");
-                }
+                this.ActualizarCarro();
             }
             else
             {
-                lblCarrito.AllowDrop = false;// No funciono, lo tengo que arreglar
-                lvProductos.AllowDrop = false;
+                lblCarrito.Visible = false;
+                lvCarroDeCompras.Visible = false;
+                btnTirarProducto.Visible = false;
             }
-            // Carga los productos al listbox del carro
         }
 
-        private void ACtualizarProductos()
+        private void ActualizarProductos()
         {
 
             Dictionary<Producto, string> listaFiltrada = new Dictionary<Producto, string>();
@@ -60,22 +59,22 @@ namespace Yanez.Evelyn._2E.PrimerParcial
                     listaFiltrada = PetShop.FiltrarListadoProducto(typeof(Juguete));
                     break;
                 case ETipoDeProducto.ArticuloDeCuidado:
-                    listaFiltrada = PetShop.FiltrarListadoProducto(typeof(ArticuloDeCuidado));
+                    listaFiltrada = PetShop.FiltrarListadoProducto(typeof(ArticuloDeFarmacia));
                     break;
             }
-            //ImageList imgs = new ImageList();
+
+            ImageList listaDeImagenes = new ImageList();
+            ResourceManager adminDeRecursos = Properties.Resources.ResourceManager;
             int i = 0;
             foreach (KeyValuePair<Producto, string> producto in listaFiltrada)
             {
-                //imgs.Images.Add(Image.FromFile(producto.Value));
-                //string[] fila = {i.ToString() ,producto.Key.Descripcion, producto.Key.Marca, producto.Key.Id.ToString()};
-                //var nuevoItem = new ListViewItem(fila);
-                //lvProductos.Items.Add(nuevoItem);
+                Bitmap imagen = (Bitmap)adminDeRecursos.GetObject(producto.Value);
+                listaDeImagenes.Images.Add(imagen);
                 lvProductos.Items.Add(producto.Key.Id.ToString(), producto.Key.Descripcion, i);
                 i++;
             }
-
-
+            listaDeImagenes.ImageSize = new Size(75, 80);
+            lvProductos.LargeImageList = listaDeImagenes;
         }
 
         private void lvProductos_MouseDown(object sender, MouseEventArgs e)
@@ -85,10 +84,10 @@ namespace Yanez.Evelyn._2E.PrimerParcial
                 lvProductos_MouseDoubleClick(sender, e);
                 return;
             }
-            if (lvProductos.SelectedItems.Count > 0)
+            else if (lvProductos.SelectedItems.Count > 0 && e.Clicks == 1)
             {
                 ListViewItem item = lvProductos.SelectedItems[0];
-                DoDragDrop(item.Name, DragDropEffects.All);
+                DoDragDrop(item.Name, DragDropEffects.Copy);
             }
         }
 
@@ -102,14 +101,13 @@ namespace Yanez.Evelyn._2E.PrimerParcial
                 Producto producto = PetShop.BuscarProducto(id);
                 // Se agrega el producto al carro del cliente.
                 FormEmpleado.cliente[id] = producto;
-                // Se agrega a la lista.
-                this.lbCarroDeCompras.Items.Add($"{producto.Descripcion} - {producto.Marca}");
+                this.ActualizarCarro();
             }
         }
 
         private void cmbTipoDeProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.ACtualizarProductos();
+            this.ActualizarProductos();
         }
 
         private void lvProductos_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -121,9 +119,58 @@ namespace Yanez.Evelyn._2E.PrimerParcial
                 this.Visible = false;
                 frmDatosProducto.ShowDialog();
                 this.Visible = true;
+                this.ActualizarCarro();
             }
+        }
+        private void ActualizarCarro()
+        {
+            lvCarroDeCompras.Clear();
+            if (FormEmpleado.cliente is not null)
+            {
+                int i = 0;
+                foreach (KeyValuePair<Producto, int> producto in FormEmpleado.cliente.Carrito)
+                {
+                    string datosAMostrar = $"{producto.Value} - {producto.Key.Descripcion} - {producto.Key.Marca}";
+                    lvCarroDeCompras.Items.Add(producto.Key.Id.ToString(), datosAMostrar,i);
+                    i++;
+                }
+            }
+        }
 
+        private void lvCarroDeCompras_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+            string strId = (string)e.Data.GetData(DataFormats.Text);
 
+            if (int.TryParse(strId, out int id) && !FormEmpleado.cliente.ValidarProductoEnCanasto(id))
+            {
+                Producto producto = PetShop.BuscarProducto(id);
+                // Se agrega el producto al carro del cliente.
+                FormEmpleado.cliente[id] = producto;
+                this.ActualizarCarro();
+            }
+        }
+
+        private void btnVaciarCarrito_Click(object sender, EventArgs e)
+        {
+            FormEmpleado.cliente.Carrito.Clear();
+            this.ActualizarCarro();
+        }
+
+        private void btnTirarProducto_Click(object sender, EventArgs e)
+        {
+            if (this.lvCarroDeCompras.SelectedItems.Count > 0)
+            {
+                if (int.TryParse(this.lvCarroDeCompras.SelectedItems[0].Name, out int id))
+                {
+                    Producto producto = PetShop.BuscarProducto(id);
+                    if (producto is not null)
+                    {
+                        FormEmpleado.cliente.Carrito.Remove(producto);
+                        this.ActualizarCarro();
+                    }
+                }
+            }
         }
     }
 }

@@ -41,23 +41,14 @@ namespace Yanez.Evelyn._2E.PrimerParcial
 
             if (FormEmpleado.cliente is not null)
             {
-                if (FormEmpleado.cliente.ProductosComprados.TryGetValue(this.producto, out int cantidad))
-                    nudCantidad.Value = cantidad;
-                else
-                    nudCantidad.Value = 0;
-                if (FormEmpleado.cliente.ValidarProductoEnCanasto(this.producto.Id))
-                {
-                    btnAgregarQuitarCarro.Text = "Quitar del Carro";
-                }
-                else
-                {
-                    btnAgregarQuitarCarro.Text = "Agregar al Carro";
-                }
+                this.ActualizarVista();
             }
             else
             {
                 btnAgregarQuitarCarro.Enabled = false;
                 lblCarrito.Enabled = false;
+                lblCarrito.Visible = false;
+                lbCarroDeCompras.Visible = false;
             }
         }
 
@@ -80,6 +71,45 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             {
                 FormEmpleado.cliente.Carrito.Add(this.producto, (int)nudCantidad.Value);
             }
+            this.ActualizarVista();
+        }
+
+        private void btnActualizarCantidad_Click(object sender, EventArgs e)
+        {
+            if (FormEmpleado.cliente.ValidarProductoEnCanasto(this.producto.Id))
+            {
+                FormEmpleado.cliente.Carrito.Remove(this.producto);
+                FormEmpleado.cliente.Carrito.Add(this.producto, (int)nudCantidad.Value);
+            }
+            this.ActualizarVista();
+        }
+
+        private void ActualizarVista()
+        {
+            this.lbCarroDeCompras.Items.Clear();
+            foreach (KeyValuePair<Producto, int> producto in FormEmpleado.cliente.Carrito)
+            {
+                this.lbCarroDeCompras.Items.Add($"{producto.Value} - {producto.Key.Descripcion} - {producto.Key.Marca}");
+            }
+            if (FormEmpleado.cliente.ProductosComprados.TryGetValue(this.producto, out int cantidad))
+                nudCantidad.Value = cantidad;
+            else
+                nudCantidad.Value = 0;
+            if (FormEmpleado.cliente.ValidarProductoEnCanasto(this.producto.Id))
+            {
+                btnAgregarQuitarCarro.Text = "Quitar del Carro";
+                btnActualizarCantidad.Visible = true;
+            }
+            else
+            {
+                btnAgregarQuitarCarro.Text = "Agregar al Carro";
+                btnActualizarCantidad.Visible = false;
+            }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

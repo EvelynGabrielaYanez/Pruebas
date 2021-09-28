@@ -48,26 +48,26 @@ namespace Entidades
             Alimento alimento2 = new Alimento("Regular Fit", 6184, "Sabrositos", 7.5, ETipoDeAnimal.Gato, "MONAMI",50);
             Alimento alimento3 = new Alimento("Mix Canarios Mezcla Semillas", 6184, "Nelsoni R.", 0.75, ETipoDeAnimal.Pajaro, "Pet & Fish",30);
             Alimento alimento4 = new Alimento("Tropimix", 6184, "Zootec", 1, ETipoDeAnimal.Hamster, "Puppis",34);
-            PetShop.productos.Add(alimento1, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(alimento2, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(alimento3, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(alimento4, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(alimento1, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(alimento2, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(alimento3, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(alimento4, "Alimento_Sabrositos_Para_Perros");
 
             // Se cargan camas
             Cama cama1 = new Cama("Circular con estampado", 4000, "Coconing", "MascotasYa", "Ecológico hipoalergénico", "Polyester",5);
             Cama cama2 = new Cama("Rectangular y lisa", 5000, "Coconing", "MascotasYa", "Ecológico hipoalergénico", "Funda suave",2);
             Cama cama3= new Cama("Modelo Small", 5000, "Eggys S", "MascotasYa", "Fibra de poliéster", "Funda de peluche suave",1);
-            PetShop.productos.Add(cama1, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(cama2, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(cama3, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(cama1, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(cama2, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(cama3, "Alimento_Sabrositos_Para_Perros");
 
             // Se cargan Juguetes
             Juguete juguete1 = new Juguete("Hueso Soga", 430, "CanCat", false , false, "Puppis",10);
             Juguete juguete2 = new Juguete("Hueso S De Goma Dispensador", 800, "Rascals", false, true, "Puppis",8);
             Juguete juguete3 = new Juguete("Porta Alimento Interactivo", 1540, "PetToys", true, true, "Es Divertido",3);
-            PetShop.productos.Add(juguete1, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(juguete2, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(juguete3, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(juguete1, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(juguete2, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(juguete3, "Alimento_Sabrositos_Para_Perros");
 
             // Se cargan los Articulos de Cuidado de la Mascota
             // Articulos de Farmacia
@@ -75,20 +75,20 @@ namespace Entidades
             ArticuloDeFarmacia articuloFarmacia2 = new ArticuloDeFarmacia("Algel en comprimidos con tramadol 120 Comprimidos", 450, "Algen", "Foyel", ETipoDeAnimal.Gato,true,6);
             ArticuloDeFarmacia articuloFarmacia3 = new ArticuloDeFarmacia("Vitaminas para hamsters", 600, "Omega3 Pets", "Puppis", ETipoDeAnimal.Hamster, false,4);
             ArticuloDeFarmacia articuloFarmacia4 = new ArticuloDeFarmacia("Beepower - Promotor De Crecimiento 100ml", 1390, "Exzootix", "Puppis", ETipoDeAnimal.Pajaro, true,10);
-            PetShop.productos.Add(articuloFarmacia1, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(articuloFarmacia2, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(articuloFarmacia3, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(articuloFarmacia4, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(articuloFarmacia1, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(articuloFarmacia2, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(articuloFarmacia3, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(articuloFarmacia4, "Alimento_Sabrositos_Para_Perros");
 
             // Articulos de Limpieza
             Limpieza limpieza1 = new Limpieza("Cepillo Removedor De Pelos", 1000 , "PAKEWAY", "Puppis", ETipoDeAnimal.Perro, ETipoDePelaje.Largo,9);
             Limpieza limpieza2 = new Limpieza("Sacapelos Y Masajeador", 1500 , "FuriMinator", "Puppis", ETipoDeAnimal.Perro, ETipoDePelaje.Rizado,11);
             Limpieza limpieza3 = new Limpieza("Guante Sacapelos", 2500 , "FuriMinator", "Puppis", ETipoDeAnimal.Gato, ETipoDePelaje.Corto,69);
             Limpieza limpieza4 = new Limpieza("Shapoo", 2500 , "PAKEWAY", "Alimasc", ETipoDeAnimal.Perro, ETipoDePelaje.Raso,10);
-            PetShop.productos.Add(limpieza1, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(limpieza2, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(limpieza3, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
-            PetShop.productos.Add(limpieza4, ".\\Resources\\Alimento_Sabrositos_Para_Perros.jpg");
+            PetShop.productos.Add(limpieza1, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(limpieza2, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(limpieza3, "Alimento_Sabrositos_Para_Perros");
+            PetShop.productos.Add(limpieza4, "Alimento_Sabrositos_Para_Perros");
         }
         #endregion
 
@@ -153,7 +153,8 @@ namespace Entidades
             Dictionary<Producto, string> retorno = new Dictionary<Producto, string>();
             foreach (KeyValuePair< Producto,string> producto in productos)
             {
-                if (producto.Key.GetType() == tipoDeProducto)
+                if (producto.Key.GetType() == tipoDeProducto || 
+                    (tipoDeProducto == typeof(ArticuloDeCuidado) && producto.Key is ArticuloDeCuidado))
                 {
                     retorno.Add(producto.Key, producto.Value);
                 }

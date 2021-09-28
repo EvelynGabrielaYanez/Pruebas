@@ -63,6 +63,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Alimento_Sabrositos_Para_Perros {
+            get {
+                object obj = ResourceManager.GetObject("Alimento_Sabrositos_Para_Perros", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fondo {
             get {
                 object obj = ResourceManager.GetObject("Fondo", resourceCulture);
@@ -93,9 +103,9 @@ namespace Yanez.Evelyn._2E.PrimerParcial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap imgFarmaciaYLimpieza1 {
+        internal static System.Drawing.Bitmap imgFarmaciaYLimpieza {
             get {
-                object obj = ResourceManager.GetObject("imgFarmaciaYLimpieza1", resourceCulture);
+                object obj = ResourceManager.GetObject("imgFarmaciaYLimpieza", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +116,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial.Properties {
         internal static System.Drawing.Bitmap imgJuguetes {
             get {
                 object obj = ResourceManager.GetObject("imgJuguetes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tacho {
+            get {
+                object obj = ResourceManager.GetObject("tacho", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

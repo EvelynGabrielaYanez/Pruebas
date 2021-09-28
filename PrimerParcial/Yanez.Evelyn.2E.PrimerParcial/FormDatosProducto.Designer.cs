@@ -31,6 +31,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDatosProducto));
             this.pnlCarro = new System.Windows.Forms.Panel();
+            this.btnActualizarCantidad = new System.Windows.Forms.Button();
             this.btnAgregarQuitarCarro = new System.Windows.Forms.Button();
             this.lblCarrito = new System.Windows.Forms.Label();
             this.lbCarroDeCompras = new System.Windows.Forms.ListBox();
@@ -53,7 +54,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblTipoDeProducto = new System.Windows.Forms.Label();
-            this.btnActualizarCantidad = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.pnlCarro.SuspendLayout();
             this.pnlDetalleProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
@@ -62,6 +63,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // pnlCarro
             // 
             this.pnlCarro.BackColor = System.Drawing.Color.Indigo;
+            this.pnlCarro.Controls.Add(this.btnVolver);
             this.pnlCarro.Controls.Add(this.btnActualizarCantidad);
             this.pnlCarro.Controls.Add(this.btnAgregarQuitarCarro);
             this.pnlCarro.Controls.Add(this.lblCarrito);
@@ -71,9 +73,19 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.pnlCarro.Size = new System.Drawing.Size(172, 348);
             this.pnlCarro.TabIndex = 9;
             // 
+            // btnActualizarCantidad
+            // 
+            this.btnActualizarCantidad.Location = new System.Drawing.Point(13, 59);
+            this.btnActualizarCantidad.Name = "btnActualizarCantidad";
+            this.btnActualizarCantidad.Size = new System.Drawing.Size(143, 27);
+            this.btnActualizarCantidad.TabIndex = 12;
+            this.btnActualizarCantidad.Text = "Guardar Cantidad";
+            this.btnActualizarCantidad.UseVisualStyleBackColor = true;
+            this.btnActualizarCantidad.Click += new System.EventHandler(this.btnActualizarCantidad_Click);
+            // 
             // btnAgregarQuitarCarro
             // 
-            this.btnAgregarQuitarCarro.Location = new System.Drawing.Point(13, 37);
+            this.btnAgregarQuitarCarro.Location = new System.Drawing.Point(13, 25);
             this.btnAgregarQuitarCarro.Name = "btnAgregarQuitarCarro";
             this.btnAgregarQuitarCarro.Size = new System.Drawing.Size(143, 27);
             this.btnAgregarQuitarCarro.TabIndex = 11;
@@ -86,7 +98,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.lblCarrito.AutoSize = true;
             this.lblCarrito.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCarrito.ForeColor = System.Drawing.Color.White;
-            this.lblCarrito.Location = new System.Drawing.Point(13, 102);
+            this.lblCarrito.Location = new System.Drawing.Point(13, 95);
             this.lblCarrito.Name = "lblCarrito";
             this.lblCarrito.Size = new System.Drawing.Size(136, 19);
             this.lblCarrito.TabIndex = 10;
@@ -97,10 +109,11 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.lbCarroDeCompras.AllowDrop = true;
             this.lbCarroDeCompras.BackColor = System.Drawing.Color.Silver;
             this.lbCarroDeCompras.FormattingEnabled = true;
+            this.lbCarroDeCompras.HorizontalScrollbar = true;
             this.lbCarroDeCompras.ItemHeight = 15;
-            this.lbCarroDeCompras.Location = new System.Drawing.Point(13, 125);
+            this.lbCarroDeCompras.Location = new System.Drawing.Point(13, 122);
             this.lbCarroDeCompras.Name = "lbCarroDeCompras";
-            this.lbCarroDeCompras.Size = new System.Drawing.Size(143, 184);
+            this.lbCarroDeCompras.Size = new System.Drawing.Size(143, 169);
             this.lbCarroDeCompras.TabIndex = 8;
             // 
             // pnlDetalleProducto
@@ -123,14 +136,14 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.pnlDetalleProducto.Controls.Add(this.lblDescripcion);
             this.pnlDetalleProducto.Controls.Add(this.lblMarca);
             this.pnlDetalleProducto.Controls.Add(this.lblTipoDeProducto);
-            this.pnlDetalleProducto.Location = new System.Drawing.Point(197, 36);
+            this.pnlDetalleProducto.Location = new System.Drawing.Point(197, 24);
             this.pnlDetalleProducto.Name = "pnlDetalleProducto";
-            this.pnlDetalleProducto.Size = new System.Drawing.Size(294, 272);
+            this.pnlDetalleProducto.Size = new System.Drawing.Size(294, 297);
             this.pnlDetalleProducto.TabIndex = 10;
             // 
             // nudCantidad
             // 
-            this.nudCantidad.Location = new System.Drawing.Point(82, 233);
+            this.nudCantidad.Location = new System.Drawing.Point(83, 245);
             this.nudCantidad.Name = "nudCantidad";
             this.nudCantidad.Size = new System.Drawing.Size(57, 23);
             this.nudCantidad.TabIndex = 17;
@@ -139,7 +152,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // lblValorNumero
             // 
             this.lblValorNumero.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblValorNumero.Location = new System.Drawing.Point(225, 15);
+            this.lblValorNumero.Location = new System.Drawing.Point(227, 34);
             this.lblValorNumero.Name = "lblValorNumero";
             this.lblValorNumero.Size = new System.Drawing.Size(50, 19);
             this.lblValorNumero.TabIndex = 16;
@@ -147,7 +160,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // lblValorTipoProducto
             // 
             this.lblValorTipoProducto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblValorTipoProducto.Location = new System.Drawing.Point(50, 15);
+            this.lblValorTipoProducto.Location = new System.Drawing.Point(52, 34);
             this.lblValorTipoProducto.Name = "lblValorTipoProducto";
             this.lblValorTipoProducto.Size = new System.Drawing.Size(99, 19);
             this.lblValorTipoProducto.TabIndex = 15;
@@ -155,7 +168,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // lblValorStock
             // 
             this.lblValorStock.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblValorStock.Location = new System.Drawing.Point(225, 157);
+            this.lblValorStock.Location = new System.Drawing.Point(223, 175);
             this.lblValorStock.Name = "lblValorStock";
             this.lblValorStock.Size = new System.Drawing.Size(59, 19);
             this.lblValorStock.TabIndex = 14;
@@ -163,7 +176,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // lblValorPrecio
             // 
             this.lblValorPrecio.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblValorPrecio.Location = new System.Drawing.Point(225, 110);
+            this.lblValorPrecio.Location = new System.Drawing.Point(226, 128);
             this.lblValorPrecio.Name = "lblValorPrecio";
             this.lblValorPrecio.Size = new System.Drawing.Size(59, 19);
             this.lblValorPrecio.TabIndex = 13;
@@ -171,7 +184,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // lblValorProveedor
             // 
             this.lblValorProveedor.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblValorProveedor.Location = new System.Drawing.Point(86, 157);
+            this.lblValorProveedor.Location = new System.Drawing.Point(84, 175);
             this.lblValorProveedor.Name = "lblValorProveedor";
             this.lblValorProveedor.Size = new System.Drawing.Size(78, 19);
             this.lblValorProveedor.TabIndex = 12;
@@ -179,7 +192,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // lblValorDescripcion
             // 
             this.lblValorDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblValorDescripcion.Location = new System.Drawing.Point(105, 65);
+            this.lblValorDescripcion.Location = new System.Drawing.Point(106, 87);
             this.lblValorDescripcion.Name = "lblValorDescripcion";
             this.lblValorDescripcion.Size = new System.Drawing.Size(168, 19);
             this.lblValorDescripcion.TabIndex = 11;
@@ -187,7 +200,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // lblValorMarca
             // 
             this.lblValorMarca.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblValorMarca.Location = new System.Drawing.Point(65, 110);
+            this.lblValorMarca.Location = new System.Drawing.Point(66, 128);
             this.lblValorMarca.Name = "lblValorMarca";
             this.lblValorMarca.Size = new System.Drawing.Size(98, 19);
             this.lblValorMarca.TabIndex = 10;
@@ -196,7 +209,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCantidad.Location = new System.Drawing.Point(3, 233);
+            this.lblCantidad.Location = new System.Drawing.Point(4, 245);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(73, 19);
             this.lblCantidad.TabIndex = 9;
@@ -206,7 +219,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblProveedor.AutoSize = true;
             this.lblProveedor.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblProveedor.Location = new System.Drawing.Point(6, 157);
+            this.lblProveedor.Location = new System.Drawing.Point(4, 175);
             this.lblProveedor.Name = "lblProveedor";
             this.lblProveedor.Size = new System.Drawing.Size(78, 19);
             this.lblProveedor.TabIndex = 8;
@@ -215,7 +228,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // lblValorTotal
             // 
             this.lblValorTotal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblValorTotal.Location = new System.Drawing.Point(210, 233);
+            this.lblValorTotal.Location = new System.Drawing.Point(211, 245);
             this.lblValorTotal.Name = "lblValorTotal";
             this.lblValorTotal.Size = new System.Drawing.Size(72, 19);
             this.lblValorTotal.TabIndex = 7;
@@ -224,7 +237,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotal.Location = new System.Drawing.Point(167, 233);
+            this.lblTotal.Location = new System.Drawing.Point(168, 245);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(46, 19);
             this.lblTotal.TabIndex = 6;
@@ -234,7 +247,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblStock.AutoSize = true;
             this.lblStock.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblStock.Location = new System.Drawing.Point(170, 157);
+            this.lblStock.Location = new System.Drawing.Point(168, 175);
             this.lblStock.Name = "lblStock";
             this.lblStock.Size = new System.Drawing.Size(51, 19);
             this.lblStock.TabIndex = 5;
@@ -244,7 +257,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblPrecio.AutoSize = true;
             this.lblPrecio.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblPrecio.Location = new System.Drawing.Point(169, 110);
+            this.lblPrecio.Location = new System.Drawing.Point(170, 128);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(56, 19);
             this.lblPrecio.TabIndex = 4;
@@ -254,7 +267,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblId.Location = new System.Drawing.Point(155, 15);
+            this.lblId.Location = new System.Drawing.Point(157, 34);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(68, 19);
             this.lblId.TabIndex = 3;
@@ -264,7 +277,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDescripcion.Location = new System.Drawing.Point(6, 65);
+            this.lblDescripcion.Location = new System.Drawing.Point(7, 87);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(91, 19);
             this.lblDescripcion.TabIndex = 2;
@@ -274,7 +287,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblMarca.AutoSize = true;
             this.lblMarca.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblMarca.Location = new System.Drawing.Point(6, 110);
+            this.lblMarca.Location = new System.Drawing.Point(7, 128);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(55, 19);
             this.lblMarca.TabIndex = 1;
@@ -284,20 +297,21 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.lblTipoDeProducto.AutoSize = true;
             this.lblTipoDeProducto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTipoDeProducto.Location = new System.Drawing.Point(5, 15);
+            this.lblTipoDeProducto.Location = new System.Drawing.Point(7, 34);
             this.lblTipoDeProducto.Name = "lblTipoDeProducto";
             this.lblTipoDeProducto.Size = new System.Drawing.Size(43, 19);
             this.lblTipoDeProducto.TabIndex = 0;
             this.lblTipoDeProducto.Text = "Tipo:";
             // 
-            // btnActualizarCantidad
+            // btnVolver
             // 
-            this.btnActualizarCantidad.Location = new System.Drawing.Point(13, 70);
-            this.btnActualizarCantidad.Name = "btnActualizarCantidad";
-            this.btnActualizarCantidad.Size = new System.Drawing.Size(143, 27);
-            this.btnActualizarCantidad.TabIndex = 12;
-            this.btnActualizarCantidad.Text = "Aceptar Edición";
-            this.btnActualizarCantidad.UseVisualStyleBackColor = true;
+            this.btnVolver.Location = new System.Drawing.Point(13, 295);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(143, 27);
+            this.btnVolver.TabIndex = 13;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // FormDatosProducto
             // 
@@ -346,5 +360,6 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private System.Windows.Forms.Label lblValorNumero;
         private System.Windows.Forms.Label lblValorTipoProducto;
         private System.Windows.Forms.Button btnActualizarCantidad;
+        private System.Windows.Forms.Button btnVolver;
     }
 }

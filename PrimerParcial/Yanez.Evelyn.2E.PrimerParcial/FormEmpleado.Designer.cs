@@ -83,16 +83,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // btnArticulosDeCuidado
             // 
             this.btnArticulosDeCuidado.BackColor = System.Drawing.Color.Transparent;
-            this.btnArticulosDeCuidado.BackgroundImage = global::Yanez.Evelyn._2E.PrimerParcial.Properties.Resources.imgFarmaciaYLimpieza1;
+            this.btnArticulosDeCuidado.BackgroundImage = global::Yanez.Evelyn._2E.PrimerParcial.Properties.Resources.imgFarmaciaYLimpieza;
             this.btnArticulosDeCuidado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnArticulosDeCuidado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnArticulosDeCuidado.FlatAppearance.BorderSize = 0;
             this.btnArticulosDeCuidado.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnArticulosDeCuidado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnArticulosDeCuidado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArticulosDeCuidado.Location = new System.Drawing.Point(12, 12);
+            this.btnArticulosDeCuidado.Location = new System.Drawing.Point(0, 0);
             this.btnArticulosDeCuidado.Name = "btnArticulosDeCuidado";
-            this.btnArticulosDeCuidado.Size = new System.Drawing.Size(105, 103);
+            this.btnArticulosDeCuidado.Size = new System.Drawing.Size(129, 126);
             this.btnArticulosDeCuidado.TabIndex = 2;
             this.btnArticulosDeCuidado.UseVisualStyleBackColor = false;
             this.btnArticulosDeCuidado.Click += new System.EventHandler(this.btnArticulosDeCuidado_Click);
@@ -147,6 +147,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(174, 351);
             this.panel1.TabIndex = 7;
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // btnDescartarCompra
             // 

@@ -83,13 +83,24 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             }
         }
 
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (panel1.PointToClient(Cursor.Position).Y <= 10)
+            {
+                msMenu.Visible = true;
+            }
+            else
+            {
+                msMenu.Visible = false;
+            }
+        }
         private void configurarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormListadoUsuarios frmListadoUsuarios = new FormListadoUsuarios();
             this.Visible = false;
             frmListadoUsuarios.ShowDialog();
             this.Visible = true;
-
         }
 
         private void btnAlimentos_Click(object sender, EventArgs e)
@@ -153,7 +164,6 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.ConfigurarDatosCliente();
         }
 
-
         private void ConfigurarDatosCliente()
         {
             if (FormEmpleado.cliente != null)
@@ -202,5 +212,6 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             }
             this.Visible = true;
         }
+
     }
 }
