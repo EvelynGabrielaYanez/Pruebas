@@ -1,7 +1,7 @@
 ﻿
 namespace Yanez.Evelyn._2E.PrimerParcial
 {
-    partial class FormEmpleado
+    partial class FrmEmpleado
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,8 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmpleado));
-            this.btnJuguetes = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEmpleado));
             this.btnArticulosDeCuidado = new System.Windows.Forms.Button();
             this.btnAlimentos = new System.Windows.Forms.Button();
             this.btnCamas = new System.Windows.Forms.Button();
@@ -45,16 +45,19 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.lblNombreDelCliente = new System.Windows.Forms.Label();
             this.lblDatosDelCliente = new System.Windows.Forms.Label();
             this.panelJuguetes = new System.Windows.Forms.Panel();
+            this.btnJuguetes = new System.Windows.Forms.Button();
             this.panelAlimentos = new System.Windows.Forms.Panel();
             this.panelCamas = new System.Windows.Forms.Panel();
             this.panelArticulosDeCuidado = new System.Windows.Forms.Panel();
             this.msMenu = new System.Windows.Forms.MenuStrip();
-            this.listadoDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurarUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSeciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionTSM = new System.Windows.Forms.ToolStripMenuItem();
+            this.ttCompra = new System.Windows.Forms.ToolTip(this.components);
+            this.tmrMenuPrincipal = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panelJuguetes.SuspendLayout();
             this.panelAlimentos.SuspendLayout();
@@ -62,23 +65,6 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.panelArticulosDeCuidado.SuspendLayout();
             this.msMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnJuguetes
-            // 
-            this.btnJuguetes.BackColor = System.Drawing.Color.Transparent;
-            this.btnJuguetes.BackgroundImage = global::Yanez.Evelyn._2E.PrimerParcial.Properties.Resources.imgJuguetes;
-            this.btnJuguetes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnJuguetes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnJuguetes.FlatAppearance.BorderSize = 0;
-            this.btnJuguetes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnJuguetes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnJuguetes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnJuguetes.Location = new System.Drawing.Point(0, 0);
-            this.btnJuguetes.Name = "btnJuguetes";
-            this.btnJuguetes.Size = new System.Drawing.Size(129, 126);
-            this.btnJuguetes.TabIndex = 1;
-            this.btnJuguetes.UseVisualStyleBackColor = false;
-            this.btnJuguetes.Click += new System.EventHandler(this.btnJuguetes_Click);
             // 
             // btnArticulosDeCuidado
             // 
@@ -94,6 +80,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnArticulosDeCuidado.Name = "btnArticulosDeCuidado";
             this.btnArticulosDeCuidado.Size = new System.Drawing.Size(129, 126);
             this.btnArticulosDeCuidado.TabIndex = 2;
+            this.ttCompra.SetToolTip(this.btnArticulosDeCuidado, "Es necesario buscar el cliente para ingresar a esta sección.");
             this.btnArticulosDeCuidado.UseVisualStyleBackColor = false;
             this.btnArticulosDeCuidado.Click += new System.EventHandler(this.btnArticulosDeCuidado_Click);
             // 
@@ -111,6 +98,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnAlimentos.Name = "btnAlimentos";
             this.btnAlimentos.Size = new System.Drawing.Size(129, 126);
             this.btnAlimentos.TabIndex = 3;
+            this.ttCompra.SetToolTip(this.btnAlimentos, "Es necesario buscar el cliente para ingresar a esta sección.");
             this.btnAlimentos.UseVisualStyleBackColor = false;
             this.btnAlimentos.Click += new System.EventHandler(this.btnAlimentos_Click);
             // 
@@ -128,6 +116,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnCamas.Name = "btnCamas";
             this.btnCamas.Size = new System.Drawing.Size(129, 126);
             this.btnCamas.TabIndex = 4;
+            this.ttCompra.SetToolTip(this.btnCamas, "Es necesario buscar el cliente para ingresar a esta sección.");
             this.btnCamas.UseVisualStyleBackColor = false;
             this.btnCamas.Click += new System.EventHandler(this.btnCamas_Click);
             // 
@@ -263,6 +252,24 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.panelJuguetes.Size = new System.Drawing.Size(129, 126);
             this.panelJuguetes.TabIndex = 8;
             // 
+            // btnJuguetes
+            // 
+            this.btnJuguetes.BackColor = System.Drawing.Color.Transparent;
+            this.btnJuguetes.BackgroundImage = global::Yanez.Evelyn._2E.PrimerParcial.Properties.Resources.imgJuguetes;
+            this.btnJuguetes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnJuguetes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJuguetes.FlatAppearance.BorderSize = 0;
+            this.btnJuguetes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnJuguetes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnJuguetes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJuguetes.Location = new System.Drawing.Point(0, 0);
+            this.btnJuguetes.Name = "btnJuguetes";
+            this.btnJuguetes.Size = new System.Drawing.Size(129, 126);
+            this.btnJuguetes.TabIndex = 1;
+            this.ttCompra.SetToolTip(this.btnJuguetes, "Es necesario buscar el cliente para ingresar a esta sección.");
+            this.btnJuguetes.UseVisualStyleBackColor = false;
+            this.btnJuguetes.Click += new System.EventHandler(this.btnJuguetes_Click);
+            // 
             // panelAlimentos
             // 
             this.panelAlimentos.Controls.Add(this.btnAlimentos);
@@ -292,7 +299,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.msMenu.BackColor = System.Drawing.Color.Silver;
             this.msMenu.Font = new System.Drawing.Font("Sitka Text", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.msMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listadoDeClientesToolStripMenuItem,
+            this.ventasToolStripMenuItem,
             this.productosToolStripMenuItem,
             this.configurarUsuariosToolStripMenuItem,
             this.seciónToolStripMenuItem});
@@ -301,17 +308,19 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.msMenu.Size = new System.Drawing.Size(516, 27);
             this.msMenu.TabIndex = 10;
             // 
-            // listadoDeClientesToolStripMenuItem
+            // ventasToolStripMenuItem
             // 
-            this.listadoDeClientesToolStripMenuItem.Name = "listadoDeClientesToolStripMenuItem";
-            this.listadoDeClientesToolStripMenuItem.Size = new System.Drawing.Size(63, 23);
-            this.listadoDeClientesToolStripMenuItem.Text = "Ventas";
+            this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(63, 23);
+            this.ventasToolStripMenuItem.Text = "Ventas";
+            this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
             this.productosToolStripMenuItem.Size = new System.Drawing.Size(85, 23);
             this.productosToolStripMenuItem.Text = "Productos";
+            this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
             // configurarUsuariosToolStripMenuItem
             // 
@@ -334,6 +343,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.cerrarSeciónToolStripMenuItem.Name = "cerrarSeciónToolStripMenuItem";
             this.cerrarSeciónToolStripMenuItem.Size = new System.Drawing.Size(165, 24);
             this.cerrarSeciónToolStripMenuItem.Text = "Ver Perfil";
+            this.cerrarSeciónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSeciónToolStripMenuItem_Click);
             // 
             // cerrarSesionTSM
             // 
@@ -342,7 +352,11 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.cerrarSesionTSM.Text = "Cerrar Sesión";
             this.cerrarSesionTSM.Click += new System.EventHandler(this.cerrarSesionTSM_Click);
             // 
-            // FormEmpleado
+            // tmrMenuPrincipal
+            // 
+            this.tmrMenuPrincipal.Tick += new System.EventHandler(this.tmrMenuPrincipal_Tick);
+            // 
+            // FrmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -358,11 +372,12 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormEmpleado";
+            this.Name = "FrmEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Empleado";
+            this.Text = "Menu Pincipal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEmpleado_FormClosing);
             this.Load += new System.EventHandler(this.FormEmpleado_Load);
+            this.VisibleChanged += new System.EventHandler(this.FrmEmpleado_VisibleChanged);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormEmpleado_MouseMove);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -378,18 +393,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         }
 
         #endregion
-        private System.Windows.Forms.Button btnJuguetes;
         private System.Windows.Forms.Button btnArticulosDeCuidado;
         private System.Windows.Forms.Button btnAlimentos;
         private System.Windows.Forms.Button btnCamas;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelJuguetes;
         private System.Windows.Forms.Panel panelAlimentos;
         private System.Windows.Forms.Panel panelCamas;
         private System.Windows.Forms.Panel panelArticulosDeCuidado;
         public System.Windows.Forms.MenuStrip msMenu;
-        private System.Windows.Forms.ToolStripMenuItem listadoDeClientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configurarUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seciónToolStripMenuItem;
@@ -404,5 +417,8 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private System.Windows.Forms.TextBox txtDniCliente;
         private System.Windows.Forms.Button btnBuscarCliente;
         private System.Windows.Forms.Button btnFinalizarCompra;
+        private System.Windows.Forms.Button btnJuguetes;
+        private System.Windows.Forms.ToolTip ttCompra;
+        public System.Windows.Forms.Timer tmrMenuPrincipal;
     }
 }

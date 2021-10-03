@@ -8,16 +8,24 @@ namespace Entidades
 {
     public class Cliente : Usuario
     {
-        // El producto y la cantidad del mismo Este va a ser el listado de productos comprados cuando el producto exista se lo va a sumar cuando compren
-        Dictionary<Producto, int> productosComprados; 
         double saldo;
         Dictionary<Producto, int> carrito;
+
+        /// <summary>
+        /// Método constructor de un cliente
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
         public Cliente(int dni, string nombre, string apellido) : base(dni, nombre, apellido)
         {
             this.saldo = 0;
-            productosComprados = new Dictionary<Producto, int>();
             carrito = new Dictionary<Producto, int>();
         }
+
+        /// <summary>
+        /// Proiedad lectura y escritura del atributo saldo
+        /// </summary>
         public double Saldo
         {
             get { return this.saldo; }
@@ -25,19 +33,23 @@ namespace Entidades
                 this.saldo = value;
             }
         }
+
+        /// <summary>
+        /// Propiedad sólo lectura  del atributo carrito
+        /// </summary>
         public Dictionary<Producto, int> Carrito
         {
             get { 
                 return this.carrito; 
             }
         }
-        public Dictionary<Producto, int> ProductosComprados
-        {
-            get
-            {
-                return this.carrito;
-            }
-        }
+
+        /// <summary>
+        /// Indexador encargado de agregar al carrito en caso de no exisitr el producto
+        /// o incrementar en uno la cantidad cargada en el carrito si este ya estaba cagado.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Producto this[int id]
         {
             set 
@@ -54,31 +66,90 @@ namespace Entidades
                 }
             }
         }
-        public bool RealizarCompra()
+
+        /// <summary>
+        /// Método encargado de retornar el tipo de cliente
+        /// </summary>
+        /// <returns></returns>
+        public override string ObtenerTipo()
         {
-            bool retorno = false;
-            double gastosTotales = 0;
-            if (this.carrito.Count > 0)
-            {
-                foreach (KeyValuePair<Producto, int> producto in this.carrito)
-                {
-                    if (!this.productosComprados.TryAdd(producto.Key, producto.Value))
-                    {
-                        int cantidadActual = this.carrito.GetValueOrDefault(producto.Key);
-                        // Reduce el stock del producto en el petship
-                        producto.Key.Stock -= cantidadActual;
-                        // Elimina el producto y vuelve  a cargar el nuevo modificado
-                        this.productosComprados.Remove(producto.Key);
-                        this.productosComprados.Add(producto.Key, cantidadActual + producto.Value);
-                    }
-                    gastosTotales += producto.Key.Precio;
-                }
-                this.carrito.Clear();
-                this.Saldo -= gastosTotales;
-                retorno = true;
-            }
-            return retorno;
+            return ETipoUsuario.Cliente.ToString();
         }
+
+        /// <summary>
+        /// Método encargado de realizar la compra con la informacion del carrito
+        /// y cliente. Asignara el valor por defecto al empleado de la venta
+        /// </summary>
+        /// <returns></returns>
+        private Venta RealizarCompra()
+        {
+            double gastosTotales = 0;
+            // Valida que el stock y el total cumplan con las reglas de negocio
+            foreach (KeyValuePair<Producto, int> producto in this.carrito)
+            {
+                int cantidadActual = this.carrito.GetValueOrDefault(producto.Key);
+                gastosTotales += producto.Key.Precio * cantidadActual;
+                if (!(producto.Key.Stock >= cantidadActual && cantidadActual>0 && gastosTotales <= this.saldo))
+                {
+                    return null;
+                }
+            }
+
+            Venta venta = new Venta(this, this.carrito);
+            // Reduce el stock del producto en el petship
+            foreach (KeyValuePair<Producto, int> producto in this.carrito)
+            {
+                int cantidadActual = this.carrito.GetValueOrDefault(producto.Key);
+                producto.Key.Stock -= cantidadActual;
+            }
+            this.carrito.Clear();
+            this.Saldo -= gastosTotales;
+
+            // Agrega la venta al historico
+            PetShop.Ventas.Add(venta);
+
+            return venta;
+        }
+
+        /// <summary>
+        /// Conversión implicita de un cliente a una venta.
+        /// Generara una venta con todos los datos del cliente y
+        /// a signara el valor por defecto al empleado de la venta
+        /// </summary>
+        /// <param name="cliente"></param>
+        public static implicit operator Venta(Cliente cliente)
+        {
+            return cliente.RealizarCompra();
+        }
+
+        /// <summary>
+        /// Método que edita la cantidad de productos que hay en el carrito
+        /// en caso de que el mismo ya se encuentre cargado
+        /// </summary>
+        /// <param name="cantidadDelProducto"></param>
+        /// <param name="idProducto"></param>
+        /// <returns></returns>
+        public bool EditarCantidadDeProducto(int cantidadDelProducto,int idProducto)
+        {
+            bool respuesta = false;
+            if (cantidadDelProducto > 0 && idProducto > 0)
+            {
+                Producto producto = PetShop.BuscarProducto(idProducto);
+                if (producto is not null)
+                {
+                    this.carrito.Remove(producto);
+                    this.carrito.Add(producto, cantidadDelProducto);
+                    respuesta = true;
+                }
+            }
+            return respuesta;
+        }
+
+        /// <summary>
+        /// Método encargado de buscar un producto en el canasto del cliente.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public KeyValuePair<Producto, int> BuscarProductoEnCanasto(int id)
         {
             KeyValuePair<Producto, int> retorno = new KeyValuePair<Producto, int>();
@@ -93,11 +164,24 @@ namespace Entidades
             return retorno;
         }
 
+        /// <summary>
+        /// Método que valida si un producto está o no en el canasto
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool ValidarProductoEnCanasto(int id)
         {
             return !this.BuscarProductoEnCanasto(id).Equals(default(KeyValuePair<Producto, int>));
         }
 
+        /// <summary>
+        /// Sobrecarga del operador igual que comparara dos clientes
+        /// En caso de ser los dos nulos retornara true
+        /// En caso de no serlo considerara que estos son iguales cuando tengan el mismo DNI
+        /// </summary>
+        /// <param name="cliente1"></param>
+        /// <param name="cliente2"></param>
+        /// <returns></returns>
         public static bool operator == (Cliente cliente1, Cliente cliente2)
         {
             bool retorno = false;
@@ -107,22 +191,58 @@ namespace Entidades
                 retorno = true;
             return retorno;
         }
+
+        /// <summary>
+        /// Sobrecarga de Equales que en caso de ser el objeto pasado por parametro 
+        /// un cliente lo comparara por dni
+        /// Caso contrario retornara falso
+        /// </summary>
+        /// <param name="cliente1"></param>
+        /// <param name="cliente2"></param>
+        /// <returns></returns>
         public override bool Equals(Object cliente)
         {
-            return this == (Cliente)cliente;
+            return cliente.GetType() == typeof(Cliente) && this == (Cliente)cliente;
         }
+
+        /// <summary>
+        /// Sobrecarga del operador igual que comparara dos clientes
+        /// En caso de ser los dos nulos retornara falso
+        /// En caso de no serlo considerara que estos son distinto cuando tengan el distinto DNI
+        /// </summary>
+        /// <param name="cliente1"></param>
+        /// <param name="cliente2"></param>
+        /// <returns></returns>
         public static bool operator !=(Cliente cliente1, Cliente cliente2)
         {
             return !(cliente1 == cliente2);
         }
 
-        public override bool ValidarUsuario(Usuario usuario)
+        /// <summary>
+        /// Método encargado de retornar los datos del cliente
+        /// </summary>
+        /// <returns></returns>
+        public override string MostrarDatos()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.MostrarDatos());
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Método encargado de cargarle saldo a un cliente
+        /// En caso de este ya tener saldo se mantendra el mismo y se le 
+        /// adicionara el pasado por parámetros
+        /// </summary>
+        /// <param name="saldoACargar"></param>
+        /// <returns></returns>
+        public bool CargarSaldo(double saldoACargar)
         {
             bool respuesta = false;
-            if (usuario is Empleado)
+            if (saldoACargar > 0)
             {
-                Cliente cliente = (Cliente)usuario;
-                respuesta = this.Nombre == cliente.Nombre && this.Apellido == cliente.Apellido && cliente == this;
+                this.Saldo += saldoACargar;
+                respuesta = true;
             }
             return respuesta;
         }

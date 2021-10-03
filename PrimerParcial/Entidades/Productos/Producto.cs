@@ -17,47 +17,81 @@ namespace Entidades
         static int ultimoId;
         protected int id;
         protected int stock;
+        /// <summary>
+        /// Método Consutrcor de la clase producto
+        /// </summary>
         static Producto()
         {
             Producto.ultimoId = 0;
         }
-        public Producto(string descripcion,double precio, string marca, string proveedor, int stock)
+        private Producto()
+        {
+            this.id = Producto.ultimoId;
+            Producto.ultimoId++;
+        }
+        /// <summary>
+        /// Método Constructor de la clase producto
+        /// </summary>
+        /// <param name="descripcion">Descripción del producto</param>
+        /// <param name="precio">Precio del producto</param>
+        /// <param name="marca">Marca del producto</param>
+        /// <param name="proveedor">Proveedor del producto</param>
+        /// <param name="stock">Stock del producto</param>
+        public Producto(string descripcion,double precio, string marca, string proveedor, int stock) : this()
         {
             this.descripcion = descripcion;
             this.marca = marca;
             this.precio = precio;
             this.proveedor = proveedor;
             this.stock = stock;
-            this.id = Producto.ultimoId;
-            Producto.ultimoId++;
-
         }
+        /// <summary>
+        /// Propiedad solo lectura del atributo Id
+        /// </summary>
         public int Id
         {
             get { return this.id; }
         }
+        /// <summary>
+        /// Propiedad solo lectura del atributo descripcion
+        /// </summary>
         public string Descripcion
         {
             get { return this.descripcion; }
         }
+        /// <summary>
+        /// Propiedad solo lectura del atributo marca
+        /// </summary>
         public string Marca
         {
             get { return this.marca; }
         }
+        /// <summary>
+        /// Propiedad solo lectura del atributo precio
+        /// </summary>
         public double Precio
         {
             get { return this.precio; }
         }
+        /// <summary>
+        /// Propiedad solo lectura del atributo proveedor
+        /// </summary>
         public string Proveedor
         {
             get { return this.proveedor; }
         }
+        /// <summary>
+        /// Propiedad solo lectura del atributo stock
+        /// </summary>
         public int Stock
         {
             set { this.stock = value; }
             get { return this.stock; }
         }
-
+        /// <summary>
+        /// Método para obtener el tipo de producto
+        /// </summary>
+        /// <returns>cadena de caracteres con el tipo de producto</returns>
         public string ObtenerTipoDeProducto()
         {
             string retorno;
@@ -72,6 +106,15 @@ namespace Entidades
                 retorno = ETipoDeProducto.ArticuloDeCuidado.ToString();
 
             return retorno;
+        }
+
+        /// <summary>
+        /// Conversor explicito de producto a string
+        /// </summary>
+        /// <param name="producto">Retorna "Descricion - marca - Id" del producto</param>
+        public static explicit operator string(Producto producto)
+        {
+            return $"{producto.Descripcion} - {producto.Marca} - {producto.Id}";
         }
 
     }

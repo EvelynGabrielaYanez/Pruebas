@@ -13,19 +13,31 @@
     <Compile Update="FormDatosProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormEdicionUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="FormFinalizarCompra.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormListadoUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormEmpleado.cs">
+    <Compile Update="FrmEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormInicioSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmCargarSaldo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmEdicionUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmListadoProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmPerfilEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmVentas.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

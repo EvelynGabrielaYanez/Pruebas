@@ -29,18 +29,26 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormListadoUsuarios));
             this.cmbTipoUsuario = new System.Windows.Forms.ComboBox();
             this.lblTipoDeUsuario = new System.Windows.Forms.Label();
             this.dgUsuarios = new System.Windows.Forms.DataGridView();
-            this.cmbBuscar = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.panelTipos = new System.Windows.Forms.Panel();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.chbInactivos = new System.Windows.Forms.CheckBox();
+            this.chbActivos = new System.Windows.Forms.CheckBox();
+            this.pnlActivos = new System.Windows.Forms.Panel();
+            this.pnlInactivos = new System.Windows.Forms.Panel();
+            this.tmrCierreSesion = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgUsuarios)).BeginInit();
             this.panelTipos.SuspendLayout();
+            this.pnlActivos.SuspendLayout();
+            this.pnlInactivos.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbTipoUsuario
@@ -68,6 +76,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // 
             this.dgUsuarios.AllowUserToAddRows = false;
             this.dgUsuarios.AllowUserToDeleteRows = false;
+            this.dgUsuarios.AllowUserToResizeRows = false;
             this.dgUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -79,16 +88,8 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.dgUsuarios.Name = "dgUsuarios";
             this.dgUsuarios.ReadOnly = true;
             this.dgUsuarios.RowTemplate.Height = 25;
-            this.dgUsuarios.Size = new System.Drawing.Size(650, 267);
+            this.dgUsuarios.Size = new System.Drawing.Size(650, 270);
             this.dgUsuarios.TabIndex = 2;
-            // 
-            // cmbBuscar
-            // 
-            this.cmbBuscar.FormattingEnabled = true;
-            this.cmbBuscar.Location = new System.Drawing.Point(461, 70);
-            this.cmbBuscar.Name = "cmbBuscar";
-            this.cmbBuscar.Size = new System.Drawing.Size(186, 23);
-            this.cmbBuscar.TabIndex = 5;
             // 
             // btnBuscar
             // 
@@ -104,6 +105,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.btnBuscar.Size = new System.Drawing.Size(32, 32);
             this.btnBuscar.TabIndex = 6;
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnAgregar
             // 
@@ -164,30 +166,94 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.panelTipos.Size = new System.Drawing.Size(727, 56);
             this.panelTipos.TabIndex = 10;
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(460, 69);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.PlaceholderText = "DNI del Usuario";
+            this.txtBuscar.Size = new System.Drawing.Size(186, 23);
+            this.txtBuscar.TabIndex = 11;
+            // 
+            // chbInactivos
+            // 
+            this.chbInactivos.AutoSize = true;
+            this.chbInactivos.BackColor = System.Drawing.Color.Transparent;
+            this.chbInactivos.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.chbInactivos.ForeColor = System.Drawing.Color.White;
+            this.chbInactivos.Location = new System.Drawing.Point(5, 1);
+            this.chbInactivos.Name = "chbInactivos";
+            this.chbInactivos.Size = new System.Drawing.Size(87, 23);
+            this.chbInactivos.TabIndex = 12;
+            this.chbInactivos.Text = "Inactivos";
+            this.chbInactivos.UseVisualStyleBackColor = false;
+            // 
+            // chbActivos
+            // 
+            this.chbActivos.AutoSize = true;
+            this.chbActivos.BackColor = System.Drawing.Color.Transparent;
+            this.chbActivos.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.chbActivos.ForeColor = System.Drawing.Color.White;
+            this.chbActivos.Location = new System.Drawing.Point(5, 2);
+            this.chbActivos.Name = "chbActivos";
+            this.chbActivos.Size = new System.Drawing.Size(77, 23);
+            this.chbActivos.TabIndex = 13;
+            this.chbActivos.Text = "Activos";
+            this.chbActivos.UseVisualStyleBackColor = false;
+            // 
+            // pnlActivos
+            // 
+            this.pnlActivos.Controls.Add(this.chbActivos);
+            this.pnlActivos.Location = new System.Drawing.Point(246, 68);
+            this.pnlActivos.Name = "pnlActivos";
+            this.pnlActivos.Size = new System.Drawing.Size(87, 24);
+            this.pnlActivos.TabIndex = 14;
+            // 
+            // pnlInactivos
+            // 
+            this.pnlInactivos.Controls.Add(this.chbInactivos);
+            this.pnlInactivos.Location = new System.Drawing.Point(354, 68);
+            this.pnlInactivos.Name = "pnlInactivos";
+            this.pnlInactivos.Size = new System.Drawing.Size(91, 24);
+            this.pnlInactivos.TabIndex = 15;
+            // 
+            // tmrCierreSesion
+            // 
+            this.tmrCierreSesion.Tick += new System.EventHandler(this.tmrCierreSesion_Tick);
+            // 
             // FormListadoUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(724, 407);
+            this.Controls.Add(this.pnlInactivos);
+            this.Controls.Add(this.pnlActivos);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.panelTipos);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.cmbBuscar);
             this.Controls.Add(this.dgUsuarios);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormListadoUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Listado de Usuarios";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormListadoUsuarios_FormClosing);
             this.Load += new System.EventHandler(this.FormListadoUsuarios_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormListadoUsuarios_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.dgUsuarios)).EndInit();
             this.panelTipos.ResumeLayout(false);
             this.panelTipos.PerformLayout();
+            this.pnlActivos.ResumeLayout(false);
+            this.pnlActivos.PerformLayout();
+            this.pnlInactivos.ResumeLayout(false);
+            this.pnlInactivos.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -196,11 +262,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private System.Windows.Forms.ComboBox cmbTipoUsuario;
         private System.Windows.Forms.Label lblTipoDeUsuario;
         private System.Windows.Forms.DataGridView dgUsuarios;
-        private System.Windows.Forms.ComboBox cmbBuscar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Panel panelTipos;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.CheckBox chbInactivos;
+        private System.Windows.Forms.CheckBox chbActivos;
+        private System.Windows.Forms.Panel pnlActivos;
+        private System.Windows.Forms.Panel pnlInactivos;
+        private System.Windows.Forms.Timer tmrCierreSesion;
     }
 }

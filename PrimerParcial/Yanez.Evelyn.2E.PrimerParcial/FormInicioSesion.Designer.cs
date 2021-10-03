@@ -1,7 +1,7 @@
 ﻿
 namespace Yanez.Evelyn._2E.PrimerParcial
 {
-    partial class FrmInicioSecion
+    partial class FrmInicioSesion
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,13 +29,17 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInicioSecion));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInicioSesion));
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.txtNombreContrasenia = new System.Windows.Forms.TextBox();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.txtDni = new System.Windows.Forms.TextBox();
-            this.lblOlvidoLaContrania = new System.Windows.Forms.LinkLabel();
             this.lblAutocompletar = new System.Windows.Forms.LinkLabel();
+            this.pnlAutocompletar = new System.Windows.Forms.Panel();
+            this.lblUsuarioInvalido = new System.Windows.Forms.Label();
+            this.pnlErrorUsuario = new System.Windows.Forms.Panel();
+            this.pnlAutocompletar.SuspendLayout();
+            this.pnlErrorUsuario.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNombreUsuario
@@ -60,7 +64,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // btnIniciarSesion
             // 
             this.btnIniciarSesion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnIniciarSesion.Location = new System.Drawing.Point(42, 179);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(42, 175);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(177, 25);
             this.btnIniciarSesion.TabIndex = 4;
@@ -77,24 +81,6 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.txtDni.Size = new System.Drawing.Size(177, 25);
             this.txtDni.TabIndex = 3;
             // 
-            // lblOlvidoLaContrania
-            // 
-            this.lblOlvidoLaContrania.ActiveLinkColor = System.Drawing.Color.White;
-            this.lblOlvidoLaContrania.AutoSize = true;
-            this.lblOlvidoLaContrania.BackColor = System.Drawing.Color.Transparent;
-            this.lblOlvidoLaContrania.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOlvidoLaContrania.ForeColor = System.Drawing.Color.Transparent;
-            this.lblOlvidoLaContrania.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lblOlvidoLaContrania.LinkColor = System.Drawing.Color.White;
-            this.lblOlvidoLaContrania.Location = new System.Drawing.Point(42, 248);
-            this.lblOlvidoLaContrania.Name = "lblOlvidoLaContrania";
-            this.lblOlvidoLaContrania.Size = new System.Drawing.Size(177, 19);
-            this.lblOlvidoLaContrania.TabIndex = 5;
-            this.lblOlvidoLaContrania.TabStop = true;
-            this.lblOlvidoLaContrania.Text = "¿Olvidaste la contraseña?";
-            this.lblOlvidoLaContrania.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblOlvidoLaContrania.VisitedLinkColor = System.Drawing.Color.White;
-            // 
             // lblAutocompletar
             // 
             this.lblAutocompletar.ActiveLinkColor = System.Drawing.Color.White;
@@ -104,7 +90,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.lblAutocompletar.ForeColor = System.Drawing.Color.Transparent;
             this.lblAutocompletar.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lblAutocompletar.LinkColor = System.Drawing.Color.White;
-            this.lblAutocompletar.Location = new System.Drawing.Point(77, 219);
+            this.lblAutocompletar.Location = new System.Drawing.Point(3, 4);
             this.lblAutocompletar.Name = "lblAutocompletar";
             this.lblAutocompletar.Size = new System.Drawing.Size(110, 19);
             this.lblAutocompletar.TabIndex = 6;
@@ -114,16 +100,44 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.lblAutocompletar.VisitedLinkColor = System.Drawing.Color.White;
             this.lblAutocompletar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAutocompletar_LinkClicked);
             // 
-            // FrmInicioSecion
+            // pnlAutocompletar
+            // 
+            this.pnlAutocompletar.Controls.Add(this.lblAutocompletar);
+            this.pnlAutocompletar.Location = new System.Drawing.Point(72, 213);
+            this.pnlAutocompletar.Name = "pnlAutocompletar";
+            this.pnlAutocompletar.Size = new System.Drawing.Size(116, 27);
+            this.pnlAutocompletar.TabIndex = 8;
+            // 
+            // lblUsuarioInvalido
+            // 
+            this.lblUsuarioInvalido.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsuarioInvalido.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblUsuarioInvalido.ForeColor = System.Drawing.Color.Indigo;
+            this.lblUsuarioInvalido.Location = new System.Drawing.Point(-3, -3);
+            this.lblUsuarioInvalido.Name = "lblUsuarioInvalido";
+            this.lblUsuarioInvalido.Size = new System.Drawing.Size(224, 22);
+            this.lblUsuarioInvalido.TabIndex = 9;
+            this.lblUsuarioInvalido.Text = "Usuario o contraseña invalidos";
+            this.lblUsuarioInvalido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlErrorUsuario
+            // 
+            this.pnlErrorUsuario.Controls.Add(this.lblUsuarioInvalido);
+            this.pnlErrorUsuario.Location = new System.Drawing.Point(20, 155);
+            this.pnlErrorUsuario.Name = "pnlErrorUsuario";
+            this.pnlErrorUsuario.Size = new System.Drawing.Size(224, 18);
+            this.pnlErrorUsuario.TabIndex = 9;
+            // 
+            // FrmInicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(263, 303);
-            this.Controls.Add(this.lblAutocompletar);
-            this.Controls.Add(this.lblOlvidoLaContrania);
+            this.ClientSize = new System.Drawing.Size(263, 262);
+            this.Controls.Add(this.pnlAutocompletar);
+            this.Controls.Add(this.pnlErrorUsuario);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.btnIniciarSesion);
             this.Controls.Add(this.txtNombreContrasenia);
@@ -133,10 +147,13 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmInicioSecion";
+            this.Name = "FrmInicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de Sesión";
             this.Load += new System.EventHandler(this.FrmInicioSecion_Load);
+            this.pnlAutocompletar.ResumeLayout(false);
+            this.pnlAutocompletar.PerformLayout();
+            this.pnlErrorUsuario.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,8 +165,10 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private System.Windows.Forms.TextBox txtNombreContrasenia;
         private System.Windows.Forms.Button btnIniciarSesion;
         private System.Windows.Forms.TextBox txtDni;
-        private System.Windows.Forms.LinkLabel lblOlvidoLaContrania;
         private System.Windows.Forms.LinkLabel lblAutocompletar;
+        private System.Windows.Forms.Panel pnlAutocompletar;
+        private System.Windows.Forms.Label lblUsuarioInvalido;
+        private System.Windows.Forms.Panel pnlErrorUsuario;
     }
 }
 

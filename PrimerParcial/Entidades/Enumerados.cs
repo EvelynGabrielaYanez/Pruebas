@@ -6,24 +6,32 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Enumerado de tipos de usuarios
+    /// </summary>
     public enum ETipoUsuario
     {
         Cliente,
         Empleado,
         Administador
     }
+
+    /// <summary>
+    /// Enumardo de tipos de productos
+    /// </summary>
     public enum ETipoDeProducto
     {
         Alimento,
         Cama,
         Juguete,
-        ArticuloDeCuidado
-    }
-    public enum EArticulosDeCuidado
-    {
+        ArticuloDeCuidado,
         Farmacia,
         Limpieza
     }
+
+    /// <summary>
+    /// Enumerado de los tipos de animales
+    /// </summary>
     public enum ETipoDeAnimal
     {
         Perro,
@@ -32,6 +40,10 @@ namespace Entidades
         Pez,
         Hamster
     }
+
+    /// <summary>
+    /// Enumerado de los tipos de pelajes
+    /// </summary>
     public enum ETipoDePelaje
     {
         Raso,

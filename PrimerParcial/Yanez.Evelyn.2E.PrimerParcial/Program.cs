@@ -17,7 +17,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmInicioSecion());
+            Application.Run(new FrmInicioSesion());
         }
     }
 }

@@ -13,5 +13,9 @@ namespace Entidades
         {
             this.requierePrescripcion = requierePrescripcion;
         }
+        public bool RequierePrescripcion
+        {
+            get { return this.requierePrescripcion; }
+        }
     }
 }

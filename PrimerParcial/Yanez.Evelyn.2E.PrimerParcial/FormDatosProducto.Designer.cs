@@ -29,8 +29,10 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDatosProducto));
             this.pnlCarro = new System.Windows.Forms.Panel();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.btnActualizarCantidad = new System.Windows.Forms.Button();
             this.btnAgregarQuitarCarro = new System.Windows.Forms.Button();
             this.lblCarrito = new System.Windows.Forms.Label();
@@ -54,7 +56,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblTipoDeProducto = new System.Windows.Forms.Label();
-            this.btnVolver = new System.Windows.Forms.Button();
+            this.tmrCerrarSesion = new System.Windows.Forms.Timer(this.components);
             this.pnlCarro.SuspendLayout();
             this.pnlDetalleProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
@@ -72,6 +74,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.pnlCarro.Name = "pnlCarro";
             this.pnlCarro.Size = new System.Drawing.Size(172, 348);
             this.pnlCarro.TabIndex = 9;
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Location = new System.Drawing.Point(13, 295);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(143, 27);
+            this.btnVolver.TabIndex = 13;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnActualizarCantidad
             // 
@@ -303,15 +315,9 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.lblTipoDeProducto.TabIndex = 0;
             this.lblTipoDeProducto.Text = "Tipo:";
             // 
-            // btnVolver
+            // tmrCerrarSesion
             // 
-            this.btnVolver.Location = new System.Drawing.Point(13, 295);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(143, 27);
-            this.btnVolver.TabIndex = 13;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            this.tmrCerrarSesion.Tick += new System.EventHandler(this.tmrCerrarSesion_Tick);
             // 
             // FormDatosProducto
             // 
@@ -321,10 +327,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             this.ClientSize = new System.Drawing.Size(516, 348);
             this.Controls.Add(this.pnlDetalleProducto);
             this.Controls.Add(this.pnlCarro);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormDatosProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle del Producto";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDatosProducto_FormClosing);
             this.Load += new System.EventHandler(this.FormDatosProducto_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormDatosProducto_MouseMove);
             this.pnlCarro.ResumeLayout(false);
             this.pnlCarro.PerformLayout();
             this.pnlDetalleProducto.ResumeLayout(false);
@@ -361,5 +373,6 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private System.Windows.Forms.Label lblValorTipoProducto;
         private System.Windows.Forms.Button btnActualizarCantidad;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Timer tmrCerrarSesion;
     }
 }

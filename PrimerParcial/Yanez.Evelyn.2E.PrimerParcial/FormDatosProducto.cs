@@ -14,72 +14,65 @@ namespace Yanez.Evelyn._2E.PrimerParcial
     public partial class FormDatosProducto : Form
     {
         Producto producto;
+        int contadorTimer;
         public FormDatosProducto(Producto producto)
         {
             InitializeComponent();
             this.producto = producto;
+            this.contadorTimer = 0;
         }
 
         private void FormDatosProducto_Load(object sender, EventArgs e)
         {
+            // Inicio el contador
+            this.tmrCerrarSesion.Start();
+
             // Se configura la apariencia
-            pnlCarro.BackColor = Color.FromArgb(125, Color.Indigo);
-            pnlDetalleProducto.BackColor = Color.FromArgb(125, Color.Silver);
-            btnAgregarQuitarCarro.BackColor = Color.FromArgb(125, Color.Silver);
+            this.pnlCarro.BackColor = Color.FromArgb(125, Color.Indigo);
+            this.pnlDetalleProducto.BackColor = Color.FromArgb(125, Color.Silver);
+            this.btnAgregarQuitarCarro.BackColor = Color.FromArgb(125, Color.Silver);
 
             // Se completan los campos
-            lblValorDescripcion.Text = this.producto.Descripcion;
-            lblValorMarca.Text = this.producto.Marca;
-            lblValorTipoProducto.Text = this.producto.ObtenerTipoDeProducto();
-            lblValorProveedor.Text = this.producto.Proveedor;
-            lblValorNumero.Text = this.producto.Id.ToString();
-            lblValorPrecio.Text = $"$ {this.producto.Precio}";
-            lblValorStock.Text = this.producto.Stock.ToString();
+            this.lblValorDescripcion.Text = this.producto.Descripcion;
+            this.lblValorMarca.Text = this.producto.Marca;
+            this.lblValorTipoProducto.Text = this.producto.ObtenerTipoDeProducto();
+            this.lblValorProveedor.Text = this.producto.Proveedor;
+            this.lblValorNumero.Text = this.producto.Id.ToString();
+            this.lblValorPrecio.Text = $"$ {this.producto.Precio}";
+            this.lblValorStock.Text = this.producto.Stock.ToString();
+            this.nudCantidad.Minimum = 0;
+            this.nudCantidad.Maximum = decimal.MaxValue;
 
+            this.CalcularPrecioTotal();
 
-            this.CalcularLabelTotal();
+            this.ActualizarVista();
 
-            if (FormEmpleado.cliente is not null)
-            {
-                this.ActualizarVista();
-            }
-            else
-            {
-                btnAgregarQuitarCarro.Enabled = false;
-                lblCarrito.Enabled = false;
-                lblCarrito.Visible = false;
-                lbCarroDeCompras.Visible = false;
-            }
         }
-
-        private void nudCantidad_ValueChanged(object sender, EventArgs e)
-        {
-            this.CalcularLabelTotal();
-        }
-        private void CalcularLabelTotal()
+        private void CalcularPrecioTotal()
         {
             lblValorTotal.Text = $"$ {(double)nudCantidad.Value * this.producto.Precio}";
         }
 
         private void btnAgregarCarro_Click(object sender, EventArgs e)
         {
-            if (FormEmpleado.cliente.ValidarProductoEnCanasto(this.producto.Id))
+            if (FrmEmpleado.cliente.ValidarProductoEnCanasto(this.producto.Id))
             {
-                FormEmpleado.cliente.Carrito.Remove(this.producto);
+                FrmEmpleado.cliente.Carrito.Remove(this.producto);
             }
             else
             {
-                FormEmpleado.cliente.Carrito.Add(this.producto, (int)nudCantidad.Value);
+                if(this.producto.Stock > 0)
+                    FrmEmpleado.cliente.Carrito.Add(this.producto, (int)nudCantidad.Value);
             }
             this.ActualizarVista();
         }
 
         private void btnActualizarCantidad_Click(object sender, EventArgs e)
         {
-            if (FormEmpleado.cliente.ValidarProductoEnCanasto(this.producto.Id))
+            if (FrmEmpleado.cliente.ValidarProductoEnCanasto(this.producto.Id) && this.producto.Stock > 0 )
             {
-                FormEmpleado.cliente.Carrito.Remove(this.producto);
-                FormEmpleado.cliente.Carrito.Add(this.producto, (int)nudCantidad.Value);
+                FrmEmpleado.cliente.Carrito.Remove(this.producto);
+                FrmEmpleado.cliente.Carrito.Add(this.producto, (int)nudCantidad.Value);
             }
             this.ActualizarVista();
         }
@@ -87,15 +80,15 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private void ActualizarVista()
         {
             this.lbCarroDeCompras.Items.Clear();
-            foreach (KeyValuePair<Producto, int> producto in FormEmpleado.cliente.Carrito)
+            foreach (KeyValuePair<Producto, int> producto in FrmEmpleado.cliente.Carrito)
             {
-                this.lbCarroDeCompras.Items.Add($"{producto.Value} - {producto.Key.Descripcion} - {producto.Key.Marca}");
+                this.lbCarroDeCompras.Items.Add($"{producto.Value} - {(string)producto.Key}");
             }
-            if (FormEmpleado.cliente.ProductosComprados.TryGetValue(this.producto, out int cantidad))
+            if (FrmEmpleado.cliente.Carrito.TryGetValue(this.producto, out int cantidad))
                 nudCantidad.Value = cantidad;
             else
-                nudCantidad.Value = 0;
-            if (FormEmpleado.cliente.ValidarProductoEnCanasto(this.producto.Id))
+                nudCantidad.Value = 1;
+            if (FrmEmpleado.cliente.ValidarProductoEnCanasto(this.producto.Id))
             {
                 btnAgregarQuitarCarro.Text = "Quitar del Carro";
                 btnActualizarCantidad.Visible = true;
@@ -110,6 +103,46 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void nudCantidad_ValueChanged(object sender, EventArgs e)
+        {
+            this.ValidarYCalcular();
+        }
+        private void ValidarYCalcular() 
+        {
+            if (nudCantidad.Value > this.producto.Stock)
+                nudCantidad.Value = this.producto.Stock;
+
+            // Calcula el total
+            this.CalcularPrecioTotal();
+        }
+
+        private void FormDatosProducto_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.contadorTimer = 0;
+            this.tmrCerrarSesion.Start();
+        }
+
+        private void tmrCerrarSesion_Tick(object sender, EventArgs e)
+        {
+            this.contadorTimer++;
+            if (contadorTimer == 100)
+            {
+                FrmEmpleado.ignorarFormClosing = true;
+                FormCollection formulariosDeLaApp = Application.OpenForms;
+                foreach (Form formulario in formulariosDeLaApp)
+                {
+                    if (formulario.Name != "FrmInicioSesion")
+                        formulario.Close();
+                }
+                MessageBox.Show("Se cerro la sesión por inactividad", "Sesión Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void FormDatosProducto_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.tmrCerrarSesion.Stop();
         }
     }
 }

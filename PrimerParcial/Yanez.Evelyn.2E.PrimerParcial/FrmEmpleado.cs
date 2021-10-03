@@ -11,25 +11,33 @@ using Entidades;
 
 namespace Yanez.Evelyn._2E.PrimerParcial
 {
-    public partial class FormEmpleado : Form
+    public partial class FrmEmpleado : Form
     {
         public static Empleado empleado;
         public static Cliente cliente;
-        public FormEmpleado()
+        int contadorTimer;
+        public static bool ignorarFormClosing;
+        public FrmEmpleado()
         {
             InitializeComponent();
-            FormEmpleado.empleado = null;
-            FormEmpleado.cliente = null;
+            FrmEmpleado.empleado = null;
+            FrmEmpleado.cliente = null;
+            ignorarFormClosing = false;
         }
 
         private void FormEmpleado_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("¿Seguro que desea cerrar sesión?", "Cierre de sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                e.Cancel = true ;
+            if (!ignorarFormClosing)
+            {
+                if (MessageBox.Show("¿Seguro que desea cerrar sesión?", "Cierre de sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    e.Cancel = true;
+            }
         }
 
         private void FormEmpleado_Load(object sender, EventArgs e)
         {
+            // Inicializa el timer
+            tmrMenuPrincipal.Start();
             // Se configura la apariencia de los paneles
             panel1.BackColor = Color.FromArgb(125,Color.Indigo);
             panelAlimentos.BackColor = Color.FromArgb(125,Color.Silver);
@@ -39,6 +47,12 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             msMenu.BringToFront();
             panel1.SendToBack();
 
+            // configuro la apariencia del menustrip segun el tipo de empleado
+            if (FrmEmpleado.empleado.GetType() == typeof(Administrador))
+                msMenu.BackColor = Color.FromArgb(171, 143, 192);
+            else
+                msMenu.BackColor = Color.Silver;
+
             // Se configura la apariencia de los botones
             btnBuscarCliente.BackColor = Color.FromArgb(171, 143, 192);
             btnDescartarCompra.BackColor = Color.FromArgb(171, 143, 192);
@@ -47,7 +61,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             // Configura el auto completado del dni del cliente
             AutoCompleteStringCollection fuenteDeAutoCompletado = new AutoCompleteStringCollection();
             // Busca la lista de clientes para autocompletar
-            List<Cliente> clientes = PetShop.FiltrarListado(typeof(Cliente)).Cast<Cliente>().ToList();
+            List<Cliente> clientes = PetShop.FiltrarListadoUsuario(typeof(Cliente)).Cast<Cliente>().ToList();
             foreach (Cliente cliente in clientes)
             {
                 fuenteDeAutoCompletado.Add(cliente.Dni.ToString());
@@ -68,32 +82,34 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             btnFinalizarCompra.Enabled = false;
             btnDescartarCompra.Enabled = false;
 
+            // se configuran el menu segun el tipo de empleado
+            this.VistaSegunEmpleado();
+        }
+
+        private void VistaSegunEmpleado()
+        {
+            if (typeof(Empleado) == FrmEmpleado.empleado.GetType())
+                msMenu.Items[0].Visible = false;
         }
 
 
         private void FormEmpleado_MouseMove(object sender, MouseEventArgs e)
         {
+            this.contadorTimer = 0;
+            this.tmrMenuPrincipal.Start();
             if (e.Y <= 10)
-            {
                 msMenu.Visible = true;
-            }
             else
-            {
                 msMenu.Visible = false;
-            }
         }
 
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (panel1.PointToClient(Cursor.Position).Y <= 10)
-            {
                 msMenu.Visible = true;
-            }
             else
-            {
                 msMenu.Visible = false;
-            }
         }
         private void configurarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -105,34 +121,46 @@ namespace Yanez.Evelyn._2E.PrimerParcial
 
         private void btnAlimentos_Click(object sender, EventArgs e)
         {
-            FormCompras frmCompras = new FormCompras(ETipoDeProducto.Alimento);
-            this.Visible = false;
-            frmCompras.ShowDialog();
-            this.Visible = true;
+            if (FrmEmpleado.cliente is not null)
+            {
+                FormCompras frmCompras = new FormCompras(ETipoDeProducto.Alimento);
+                this.Visible = false;
+                frmCompras.ShowDialog();
+                this.Visible = true;
+            }
         }
 
         private void btnArticulosDeCuidado_Click(object sender, EventArgs e)
         {
-            FormCompras frmCompras = new FormCompras(ETipoDeProducto.ArticuloDeCuidado);
-            this.Visible = false;
-            frmCompras.ShowDialog();
-            this.Visible = true;
+            if (FrmEmpleado.cliente is not null)
+            {
+                FormCompras frmCompras = new FormCompras(ETipoDeProducto.ArticuloDeCuidado);
+                this.Visible = false;
+                frmCompras.ShowDialog();
+                this.Visible = true;
+            }
         }
 
         private void btnJuguetes_Click(object sender, EventArgs e)
         {
-            FormCompras frmCompras = new FormCompras(ETipoDeProducto.Juguete);
-            this.Visible = false;
-            frmCompras.ShowDialog();
-            this.Visible = true;
+            if (FrmEmpleado.cliente is not null)
+            {
+                FormCompras frmCompras = new FormCompras(ETipoDeProducto.Juguete);
+                this.Visible = false;
+                frmCompras.ShowDialog();
+                this.Visible = true;
+            }
         }
 
         private void btnCamas_Click(object sender, EventArgs e)
         {
-            FormCompras frmCompras = new FormCompras(ETipoDeProducto.Cama);
-            this.Visible = false;
-            frmCompras.ShowDialog();
-            this.Visible = true;
+            if (FrmEmpleado.cliente is not null)
+            {
+                FormCompras frmCompras = new FormCompras(ETipoDeProducto.Cama);
+                this.Visible = false;
+                frmCompras.ShowDialog();
+                this.Visible = true;
+            }
         }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
@@ -140,15 +168,15 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             int dni = Usuario.ValidarDNI(txtDniCliente.Text);
             if (dni != 0)
             {
-                FormEmpleado.cliente = new Cliente(dni, "", "");
-                Usuario usuario = PetShop.BuscarUsuario(FormEmpleado.cliente);
+                FrmEmpleado.cliente = new Cliente(dni, "", "");
+                Usuario usuario = PetShop.BuscarCliente(FrmEmpleado.cliente);
                 if (usuario != null && usuario.GetType() == typeof(Cliente))
                 {
-                    FormEmpleado.cliente = (Cliente)usuario;
+                    FrmEmpleado.cliente = (Cliente)usuario;
                 }
                 else
                 {
-                    if (MessageBox.Show("No existe un cliente con el DNI indicado. \n¿Desea registrarlo?", "Cliente No Registrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("No existe un cliente con el DNI indicado.\n¿Desea registrarlo?", "Cliente No Registrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         FormListadoUsuarios frmListadoUsuarios = new FormListadoUsuarios();
                         this.Visible = false;
@@ -166,12 +194,12 @@ namespace Yanez.Evelyn._2E.PrimerParcial
 
         private void ConfigurarDatosCliente()
         {
-            if (FormEmpleado.cliente != null)
+            if (FrmEmpleado.cliente != null)
             {
-                lblNombreDelCliente.Text = $"Nombre: {FormEmpleado.cliente.Nombre}";
-                lblApellido.Text = $"Apellido: {FormEmpleado.cliente.Apellido}";
-                lblDniCliente.Text = $"DNI: {FormEmpleado.cliente.Dni}";
-                lblSaldo.Text = $"Saldo: {FormEmpleado.cliente.Saldo}";
+                lblNombreDelCliente.Text = $"Nombre: {FrmEmpleado.cliente.Nombre}";
+                lblApellido.Text = $"Apellido: {FrmEmpleado.cliente.Apellido}";
+                lblDniCliente.Text = $"DNI: {FrmEmpleado.cliente.Dni}";
+                lblSaldo.Text = $"Saldo: {FrmEmpleado.cliente.Saldo}";
                 btnFinalizarCompra.Enabled = true;
                 btnDescartarCompra.Enabled = true;
             }
@@ -197,21 +225,71 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         }
         private void DescartarComra()
         {
-            FormEmpleado.cliente = null;
+            FrmEmpleado.cliente = null;
             this.ConfigurarDatosCliente();
             txtDniCliente.Text = string.Empty;
         }
 
         private void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
-            FormFinalizarCompra frmFinalizarCompra = new FormFinalizarCompra();
+            FormFinalizarCompra frmFinalizarCompra = new FormFinalizarCompra(FrmEmpleado.cliente);
             this.Visible = false;
             if (frmFinalizarCompra.ShowDialog() == DialogResult.OK)
-            {
                 this.DescartarComra();
-            }
+            else
+                this.lblSaldo.Text = $"Saldo: ${FrmEmpleado.cliente.Saldo}";
+
             this.Visible = true;
         }
 
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmListadoProductos frmListadoProductos = new FrmListadoProductos();
+            this.Visible = false;
+            frmListadoProductos.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmVentas frmVentas = new FrmVentas();
+            this.Visible = false;
+            frmVentas.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void cerrarSeciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPerfilEmpleado frmPerfilEmpleado = new FrmPerfilEmpleado();
+            this.Visible = false;
+            frmPerfilEmpleado.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void tmrMenuPrincipal_Tick(object sender, EventArgs e)
+        {
+            this.contadorTimer++;
+            if (this.contadorTimer == 100)
+            {
+                ignorarFormClosing = true;
+                FormCollection formulariosDeLaApp = Application.OpenForms;
+                foreach (Form formulario in formulariosDeLaApp)
+                {
+                    if (formulario.Name != "FrmInicioSesion" && formulario.Name != "FrmEmpleado")
+                        formulario.Close();
+                }
+                MessageBox.Show("Se cerro la sesión por inactividad","Sesión Finalizada",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+                this.Close();
+            }
+        }
+
+        private void FrmEmpleado_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == false)
+            {
+                this.tmrMenuPrincipal.Stop();
+            }
+        }
     }
 }

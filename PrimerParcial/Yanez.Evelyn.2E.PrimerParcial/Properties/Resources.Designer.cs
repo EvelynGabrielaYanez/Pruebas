@@ -63,6 +63,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Algel_comprimidos_tramadol_120 {
+            get {
+                object obj = ResourceManager.GetObject("Algel_comprimidos_tramadol_120", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Alimento_Sabrositos_Para_Perros {
             get {
                 object obj = ResourceManager.GetObject("Alimento_Sabrositos_Para_Perros", resourceCulture);
@@ -73,9 +83,99 @@ namespace Yanez.Evelyn._2E.PrimerParcial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Beepower_Promotor_Crecimiento_100ml_Exzootix {
+            get {
+                object obj = ResourceManager.GetObject("Beepower_Promotor_Crecimiento_100ml_Exzootix", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cepillo_Removedor_Pelos_PAKEWAY {
+            get {
+                object obj = ResourceManager.GetObject("Cepillo_Removedor_Pelos_PAKEWAY", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Circular_con_estampado_Coconing {
+            get {
+                object obj = ResourceManager.GetObject("Circular_con_estampado_Coconing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fondo {
             get {
                 object obj = ResourceManager.GetObject("Fondo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Guante_Sacapelos_FuriMinator {
+            get {
+                object obj = ResourceManager.GetObject("Guante_Sacapelos_FuriMinator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hueso_De_Goma_Dispensador_Rascals {
+            get {
+                object obj = ResourceManager.GetObject("Hueso_De_Goma_Dispensador_Rascals", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hueso_Soga_CanCat {
+            get {
+                object obj = ResourceManager.GetObject("Hueso_Soga_CanCat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon icoInformacion {
+            get {
+                object obj = ResourceManager.GetObject("icoInformacion", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconoVaciarCarro {
+            get {
+                object obj = ResourceManager.GetObject("iconoVaciarCarro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgAdmin {
+            get {
+                object obj = ResourceManager.GetObject("imgAdmin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,6 +203,16 @@ namespace Yanez.Evelyn._2E.PrimerParcial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgEmpleado {
+            get {
+                object obj = ResourceManager.GetObject("imgEmpleado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgFarmaciaYLimpieza {
             get {
                 object obj = ResourceManager.GetObject("imgFarmaciaYLimpieza", resourceCulture);
@@ -123,9 +233,119 @@ namespace Yanez.Evelyn._2E.PrimerParcial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Mix_Canarios_Mezcla_Semillas_Nelsoni {
+            get {
+                object obj = ResourceManager.GetObject("Mix_Canarios_Mezcla_Semillas_Nelsoni", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Modelo_Small_Eggys {
+            get {
+                object obj = ResourceManager.GetObject("Modelo_Small_Eggys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Perrolac_Sustituto_Lacteo_500g_Alimasc {
+            get {
+                object obj = ResourceManager.GetObject("Perrolac_Sustituto_Lacteo_500g_Alimasc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Porta_Alimento_Interactivo_PetToys {
+            get {
+                object obj = ResourceManager.GetObject("Porta_Alimento_Interactivo_PetToys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rectangular_y_lisa_Coconing {
+            get {
+                object obj = ResourceManager.GetObject("Rectangular_y_lisa_Coconing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Regular_Fit_Sabrositos {
+            get {
+                object obj = ResourceManager.GetObject("Regular_Fit_Sabrositos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sacapelos_Masajeador_FuriMinator {
+            get {
+                object obj = ResourceManager.GetObject("Sacapelos_Masajeador_FuriMinator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Shampoo_Pulguicida_Antiparasitario_Aqua_Ecto {
+            get {
+                object obj = ResourceManager.GetObject("Shampoo_Pulguicida_Antiparasitario_Aqua_Ecto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tacho {
             get {
                 object obj = ResourceManager.GetObject("tacho", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tropimix_Zootec {
+            get {
+                object obj = ResourceManager.GetObject("Tropimix_Zootec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Vitaminas_para_hamsters_Omega3_Pets {
+            get {
+                object obj = ResourceManager.GetObject("Vitaminas_para_hamsters_Omega3_Pets", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Volver {
+            get {
+                object obj = ResourceManager.GetObject("Volver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

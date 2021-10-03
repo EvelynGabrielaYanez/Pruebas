@@ -8,11 +8,16 @@ namespace Entidades
 {
     public abstract class ArticuloDeCuidado : Producto
     {
-        ETipoDeAnimal tipoDeAnimal;
-        public ArticuloDeCuidado(string descripcion, double precio, string marca, string proveedor , ETipoDeAnimal tipoDeAnimal, int stock) : base(descripcion, precio, marca, proveedor,stock)
+        ETipoDeAnimal animalQueLoConsume;
+        public ArticuloDeCuidado(string descripcion, double precio, string marca, string proveedor , ETipoDeAnimal animalQueLoConsume, int stock) : base(descripcion, precio, marca, proveedor,stock)
         {
-            this.tipoDeAnimal = tipoDeAnimal;
+            this.animalQueLoConsume = animalQueLoConsume;
         }
+        public string AnimalQueLoConsume
+        {
+            get { return this.animalQueLoConsume.ToString(); }
+        }
+
 
 
     }

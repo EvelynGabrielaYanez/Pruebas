@@ -23,7 +23,6 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         {
             if (this.cmbEmpleado.Checked)
                 this.cmbAdministrador.Checked = false;
-
         }
 
         private void cmbAdministrador_CheckedChanged(object sender, EventArgs e)
@@ -35,6 +34,7 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private void FrmAutocompletar_Load(object sender, EventArgs e)
         {
             this.cmbEmpleado.Checked = true;
+            this.pnlFondo.BackColor = Color.FromArgb(125, Color.Silver);
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -42,13 +42,13 @@ namespace Yanez.Evelyn._2E.PrimerParcial
             empleado = null;
             if (this.cmbEmpleado.Checked)
             {
-                List<Usuario> lista = PetShop.FiltrarListado(typeof(Empleado));
+                List<Usuario> lista = PetShop.FiltrarListadoUsuario(typeof(Empleado), true);
                 if (lista.Count != 0)
                     FrmAutocompletar.empleado = (Empleado)lista[0];
             }
             else
             {
-                List<Usuario> lista = PetShop.FiltrarListado(typeof(Administrador));
+                List<Usuario> lista = PetShop.FiltrarListadoUsuario(typeof(Administrador), true);
                 if (lista.Count != 0)
                     FrmAutocompletar.empleado = (Administrador)lista[0];
 

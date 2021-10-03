@@ -11,35 +11,81 @@ using Entidades;
 
 namespace Yanez.Evelyn._2E.PrimerParcial
 {
-    public partial class FrmInicioSecion : Form
+    public partial class FrmInicioSesion : Form
     {
-        static Empleado empleado;
-        public FrmInicioSecion()
+        ErrorProvider errorProvider;
+        public FrmInicioSesion()
         {
             InitializeComponent();
+            this.errorProvider = new ErrorProvider();
         }
-
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            // Valida el DNI ingresado
-            int dni = Usuario.ValidarDNI(this.txtDni.Text);
-            if (dni != 0)
+            if (this.ValidarDatos())
             {
-                Empleado bufferEmpleado = new Empleado(dni, this.txtNombreUsuario.Text, this.txtNombreContrasenia.Text);
-                // Busca el empleado en el listado de empelados del PetSop y valida los datos ingresados
-                if (PetShop.BuscarYValidarUsuario(bufferEmpleado, out Usuario empleado))
+                // Valida el DNI ingresado
+                int dni = Usuario.ValidarDNI(this.txtDni.Text);
+                if (dni != 0)
                 {
-                    FormEmpleado frmEmpleado = new FormEmpleado();
-                    FormEmpleado.empleado = (Empleado)empleado;
-                    this.Visible = false;
-                    frmEmpleado.ShowDialog();
-                    this.Visible = true;
+                    Empleado bufferEmpleado = new Empleado(dni, this.txtNombreUsuario.Text, this.txtNombreContrasenia.Text);
+                    // Busca el empleado en el listado de empelados del PetSop y valida los datos ingresados
+                    if (PetShop.BuscarYValidarUsuario(bufferEmpleado, out Usuario empleado))
+                    {
+                        FrmEmpleado frmEmpleado = new FrmEmpleado();
+                        FrmEmpleado.empleado = (Empleado)empleado;
+                        this.Visible = false;
+                        frmEmpleado.ShowDialog();
+                        this.Visible = true;
+
+                        this.pnlErrorUsuario.Visible = false;
+                        this.lblUsuarioInvalido.Visible = false;
+                    }
+                    else
+                    {
+                        this.pnlErrorUsuario.Visible = true;
+                        this.lblUsuarioInvalido.Visible = true;
+                    }
+
                 }
+
             }
+
         }
+        private bool ValidarDatos()
+        {
+            bool respuesta = true;
+            errorProvider.SetError(txtNombreUsuario, "");
+            errorProvider.SetError(txtNombreContrasenia, "");
+            errorProvider.SetError(txtDni, "");
+            if (txtNombreUsuario.Text.Trim() == string.Empty)
+            {
+                respuesta = false;
+                errorProvider.SetError(txtNombreUsuario, "Ingresar el Nombre del Usuario");
+            }
+
+            if (txtNombreContrasenia.Text.Trim() == string.Empty)
+            {
+                respuesta = false;
+                errorProvider.SetError(txtNombreContrasenia, "Ingresar la Contraseña");
+            }
+            if (txtDni.Text.Trim() == string.Empty)
+            {
+                respuesta = false;
+                errorProvider.SetError(txtDni, "Ingresar el DNI");
+            }
+            if (Usuario.ValidarDNI(txtDni.Text) == 0)
+            {
+                respuesta = false;
+                errorProvider.SetError(txtDni, "El dni ingresado es invalido");
+            }
+            return respuesta;
+        }
+
+
 
         private void lblAutocompletar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+
             FrmAutocompletar frmAutocompletar = new FrmAutocompletar();
             if (DialogResult.Cancel != frmAutocompletar.ShowDialog())
             {
@@ -61,6 +107,11 @@ namespace Yanez.Evelyn._2E.PrimerParcial
         private void FrmInicioSecion_Load(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+            this.pnlAutocompletar.BackColor = Color.FromArgb(100, Color.Silver);
+            this.pnlErrorUsuario.BackColor = Color.FromArgb(100, Color.Silver);
+            this.errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            this.pnlErrorUsuario.Visible = false;
+            this.lblUsuarioInvalido.Visible = false;
         }
     }
 }
